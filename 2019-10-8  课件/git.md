@@ -141,15 +141,22 @@ git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效
 
 - npm 目前是全球最大的包管理平台（里面有很多的代码资源）
 
-npm install nrm -g
+
+- nrm的安装
+  - npm install nrm -g
+
+   nrm(npm registry manager )是npm的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换
 
 - 测nrm的速度  
     - nrm test
 - 切换资源路线
     - nrm use taobao
 
+
 - yarn的安装
     - npm install yarn -g
+
+    Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具 ，正如官方文档中写的，Yarn 是为了弥补 npm 的一些缺陷而出现的。
 
     - yarn add 安装程序
     - yarn remove 要删除的程序
