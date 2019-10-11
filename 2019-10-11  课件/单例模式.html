@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /*    
+        单例模式
+     
+        通过 "命名空间" 的方法 生成对象的单例模式
+
+        优势: 每个对象都是独立的，即便属性起的名字一样，不会相互干扰,方便现在流行的开发模式"模块化开发"。
+
+        缺点:不可以批量生产，只能一个一个的去创建。
+        
+        由多个 简单类型或者引用类型组合在一起的事务*/
+
+
+                let obj = {
+                    name:"小明",
+                    age:"17",
+                    sex:"男"
+                }
+
+                let obj2 = {
+                    name:'小黑',
+                    age:'18',
+                    sex:'男'
+                }
+    
+    //柯里化函数
+
+
+    function fn1(x){
+        return function(y){
+            return (x+y);
+        }
+    }
+    let a = fn1(1);
+    let b = a(2);
+    console.log(b);
+    </script>
+</body>
+</html>

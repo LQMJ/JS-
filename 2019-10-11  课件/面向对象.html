@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /* 
+      
+     面向对象(Object Oriented,OO):
+     是一种对现实世界理解和抽象的方法，是计算机编程技术发展到一定阶段后的产物。
+
+        现实理解(东西是一样的，但是角度不同，所以描述的过程不同)，抽象方法
+
+        抽象:抽出像的部分（归类）
+
+        归类（归纳多种相同的特征）
+
+        
+        警察:
+            正义的使者、很危险的职业、气质、正直、威信、勇敢
+            为人民服务、惩恶扬善，穿警服、配警枪、开警车
+
+      
+        面向对象是一种编程思想，就是把相同部分的代码**抽离**出来*归为一类*，把
+        描述这个类的共有特征（方法或者属性）挂在*类的原型*下的一种编程思想（方式、模式）
+      
+        new Array   
+        new Date  
+        new String  
+        ...
+
+
+        潜规则类的首字母大写
+
+      
+       */
+       function Person(name,age,sex){
+           let obj = new Object();//初始化
+
+          // 加工
+          obj.name = name;
+          obj.age = age;
+          obj.sex = sex;
+
+          //出厂
+          return obj;
+       }
+   // obj 和 obj2 就叫实例
+    
+   let obj = Person('小明','17','男')
+   let obj2 = Person('小黑','18','男')
+ 
+    
+    
+    </script>
+</body>
+</html>

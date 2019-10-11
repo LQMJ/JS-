@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* 
+            this:这个 
+        */
+      
+    //    document.onclick = function(){
+    //        console.log(this);//=>document
+    //    } 
+     
+    //    document.onclick = fn; // fn的函数
+    //    function fn(){
+    //        console.log(this);//先输出window ，点击再输出document
+    //    }
+    //    fn()
+
+        //  document.onclick = fn();// 结果
+        //  function fn(){
+        //      console.log(this);//=>window
+        //  } 
+
+    //  document.onhaha = fn();  报错
+      // console.log(document.onhaha);// undefined
+
+    //   document.onclick = function(){
+    //       console.log(this); //document
+    //       fn();//报错
+    //   }
+    //   document.onclick = (function (){
+    //       console.log(this);//window
+    //       return fn;//报错
+    //   })()
+
+
+    //  document.onclick = function(){
+    //      return fn; //报错
+    //  }
+
+
+    //    function fn(){
+    //        console.log(this);//什么都不输出
+    //    }
+
+
+    //      let obj = {
+    //     oo:{
+    //         f:{
+    //             num:0,
+
+    //             f:()=>{
+    //                 console.log(this);// window
+    //             }
+    //         }
+    //     }
+    // }
+    // // obj.oo.f.fn();
+    // obj.oo.f.f();
+
+       
+    // document.onclick = function(){
+    //     let fn = ()=>{
+    //         console.log(this);//=>document
+    //     }
+    //     fn();
+    // }
+
+    // document.onclick = ()=>{
+    //     console.log(this);//window
+    // }
+    
+
+
+
+
+
+    </script>
+</body>
+</html>
