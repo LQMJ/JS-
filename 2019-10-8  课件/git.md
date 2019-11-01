@@ -69,7 +69,7 @@ git config --global user.eamil 'xxx'
     git reset --hard 历史ID
 
 
-- touch .gitignore (创建.gitignore文件)
+- touch .gitignore    //  创建.gitignore文件
 
 在文件中填写过滤的文件或文件夹
 
@@ -97,25 +97,25 @@ git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效
     - 设置秘钥:
         ssh-keygen -t rsa -C "your_email@example.com"
 
-    - 登录github，右边头像下拉列表有个settings，找到SSH and GPG keys，找到new ssh key点击，把秘钥放到文本框中，点击add ssh key。
+    - 登录github，右边头像下拉列表有个settings，找到SSH and GPG keys，找到new ssh key点击，把秘钥放到文本框   中，点击add ssh key。
 
     - 在github上创建一个项目
-        - 加号下拉列表，第一个创建新项目
-        - 仓库名称
-        - 说明
-        - 公开
-        - README打钩
+        + 加号下拉列表，第一个创建新项目
+        + 仓库名称
+        + 说明
+        + 公开
+        + README打钩
 
-- 查看远程仓库
-    - git remote -v   
+-  git remote -v （ 查看远程仓库 ）
+
 - 创建远程仓库
-    - git remote add origin 远程地址
+    + git remote add origin 远程地址
     ```
        比如: git remote add origin git@github.com:nizp/2019-10-8.git
     ```
 
 - 同步远程
-    - git pull origin master
+    - git pull origin master  
 
 - 推送到远程
     - git push origin(远程名字) master(分支名)
@@ -125,41 +125,43 @@ git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效
 - 删除远程仓库
     - git remote remove 远程名字
 
-
+### 第二种方式
 - 克隆项目
-    - 找到远程仓库的地址，git clone远程仓库地址 回车
+    - 找到远程仓库的地址
+    - git clone（ 远程仓库地址 ） 回车
+    - git add .
+    - git commit -m ''
+    - git push origin master
 
 
 
 ### node的安装（自带就有npm）
 
-- 项目的初始化
-    - npm init -y
-- npm install 安装程序
-
-- npm uninstall 删除安装程序
-
 - npm 目前是全球最大的包管理平台（里面有很多的代码资源）
+  + -g（全局安装）
+  + -s （项目依赖）
+  + 项目的初始化：npm init -y
+  + npm install  资源名（安装程序）
+  + npm uninstall 删除安装程序
 
 
 - nrm的安装
-  - npm install nrm -g
+  + npm install nrm -g
 
-   nrm(npm registry manager )是npm的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换
+  + nrm(npm registry manager )是npm的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换
 
-- 测nrm的速度  
-    - nrm test
-- 切换资源路线
-    - nrm use taobao
+  + nrm test（用nrm测速度） 
+    
+  + nrm use taobao （切换资源路线）
 
 
 - yarn的安装
-    - npm install yarn -g
+    + npm install yarn -g
 
-    Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具 ，正如官方文档中写的，Yarn 是为了弥补 npm 的一些缺陷而出现的。
+    + Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具 ，正如官方文档中写的，     Yarn 是为了弥补 npm 的一些缺陷而出现的。
 
-    - yarn add 安装程序
-    - yarn remove 要删除的程序
+    + yarn add 安装程序
+    + yarn remove 要删除的程序
 
 
 
