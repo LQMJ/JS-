@@ -2,21 +2,14 @@
 
 > git 版本控制工具
 
-A模块
-A.1模块
-A.2模块
-....
-Axxxxx模块
-B模块
 
-
-SVN：集中式
+ - SVN：集中式
     弊端:版本控制必须需要网络支持，一般SVN都是局域网，只能是公司内部人员使用，外界的人想参与开发是比较麻烦的，中央服务器不一定就稳定，一旦出事中央服务器所有资源都洗白白。
 
-GIT：分布式
+ - git：分布式
     不需要网络支持就能进行版本控制，只要能上网还要有开发权限都能参与开发，就算远程仓库库出事儿，计算机已经有了历史记录
 
-GITHUB：程序员交友网站、远程仓库、帮助学习
+- github：程序员交友网站、远程仓库、帮助学习
 
 
 > git的三大区域
@@ -34,8 +27,9 @@ GITHUB：程序员交友网站、远程仓库、帮助学习
 
 - 设置用户信息:
 
-git config --global user.name 'xxx'
-git config --global user.eamil 'xxx'
+  + git config --global user.name 'xxx'（用户名）
+
+  +  git config --global user.eamil 'xxx'（邮箱）
 
 - 创建版本仓库
     git init(想在哪进行版本控制，就在哪个文件夹下使用右键点击git bash here)
@@ -62,29 +56,28 @@ git config --global user.eamil 'xxx'
     - git log
     - git reflog (查看所有的历史记录（包括历史区回滚后）)
 
-出现nothing to commit, working directory clean就说明没有文件没被管理了（都被管理了）
+   - 出现nothing to commit, working directory clean就说明没有文件没被管理了（都被管理了）
 
 
-- 回滚
-    git reset --hard 历史ID
+- git reset --hard 历史ID （版本回滚）
 
+- 过滤文件
+  - touch .gitignore   （ 创建.gitignore文件 ）
 
-- touch .gitignore    //  创建.gitignore文件
+  - 在.gitignore文件中填写过滤的文件或文件夹
 
-在文件中填写过滤的文件或文件夹
+  - *.zip、*.rar、*.via、*.tmp过滤这些后缀名的文件
 
-*.zip、*.rar、*.via、*.tmp过滤这些后缀名的文件
+  - 排除指定文件夹下的文件， /txt/1.txt
 
-排除指定文件夹下的文件， /txt/1.txt
+  - 排除指定文件夹  \txt2
 
-排除指定文件夹  \txt2
-
-git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效的，那么请使用前面这段代码
+  - git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效的，那么请使用前面这段代码
 
 
 - clear清屏
 
-- 如果发现:号就按Q键退出
+- 如果发现（:）号就按Q键退出
 
 - 查看各大区域的区别
     - 工作区到暂存区  git diff
@@ -94,17 +87,19 @@ git rm -r --cached .  如果已经提交过的代码，使用.gitignore是无效
 
 - 把本地git的版本上传到github上管理
 
-    - 设置秘钥:
-        ssh-keygen -t rsa -C "your_email@example.com"
+- 设置秘钥:
+    + ssh-keygen -t rsa -C "your_email@example.com"
 
-    - 登录github，右边头像下拉列表有个settings，找到SSH and GPG keys，找到new ssh key点击，把秘钥放到文本框   中，点击add ssh key。
+    + git Bash Here 的窗口会出现一个矩形框，框的上面是秘钥的那个地址，一般是C盘/用户/..ssh文件，在这个文件下打开后缀名是pub的文本，把里面的内容复制到创建秘钥的key框的里面。
 
-    - 在github上创建一个项目
-        + 加号下拉列表，第一个创建新项目
-        + 仓库名称
-        + 说明
-        + 公开
-        + README打钩
+    + 登录github，右边头像下拉列表有个settings，找到SSH and GPG keys，找到new ssh key点击，把秘钥放到文本框   中，点击add ssh key。
+
+- 在github上创建一个项目
+    + 加号下拉列表，第一个创建新项目
+    + 仓库名称
+    + 说明
+    + 公开
+    + README打钩
 
 -  git remote -v （ 查看远程仓库 ）
 
