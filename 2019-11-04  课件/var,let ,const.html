@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    var a;
+    let b;
+    const c =0;
+    function ff(){
+
+    }
+    console.log(window)
+    /* 
+    
+    原始值：
+      储存在栈（stack）中的简单数据段，也就是说，他们的值直接储存在变量访问的位置。
+    引用值：
+       储存在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。
+
+    var
+    let
+    const
+
+var：
+    (1)当通过var创建一个变量的时候，会进行变量提升
+
+    (2)因为var会变量提升，所以变量会当做属性存到全局的活动变量下（window下）
+
+    (3)不支持块级作用域
+
+    (4)不会主动存值
+
+let：
+    (1)当通过let创建一个变量的时候，不会进行变量提升，不会在window下挂属性
+
+    (2)在定义变量之前访问这个变量，之前访问的空间叫暂存死区
+
+    (3)支持块级作用域
+
+    (4)会把每次的值存储起来
+
+    (5)不能声明同名的变量、函数、参数
+
+const:常量(不可变的量)
+    (1)当声明一个变量，不予许改变的时候就使用const
+
+    (2)不能声明同名的变量、函数、参数(会报错)
+
+    (3)支持块级作用域
+
+    (4)在定义变量之前访问这个变量，之前访问的空间叫暂存死区;
+
+   块级作用域
+
+   //   块级作用域中的变量提升
+   {
+     console.log(a);//在上方访问块中的函数a，结果是undefined
+     {
+         function a(){};//这个函数在块中，在预解析的时候会undefined
+     }
+      console.log(a);//在下方访问块中的函数a，结果是a这个函数
+   }
+
+    
+
+
+    
+    
+    
+    
+     */
+    
+    
+    
+    
+    </script>
+</body>
+</html>

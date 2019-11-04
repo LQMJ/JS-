@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+       面向对象是一种对现实世界理解和抽象的方法，是计算机发展到一定阶段后的产物
+
+       JS是一个基于面相对象思想（基于对象的）构建出来的编程语言
+
+       抽象：抽出像的部分（把相同的代码抽离出来）
+
+       类 class
+
+      面向对象编程的好处：扩展性更强，能够做到高内聚，低耦合
+
+     面向对象的定义：将具有相同特征的代码抽离出来归为一类，然后把描述这个类的细节特性（属性、方法）挂在这个类的原型下的一种编程方式
+     */
+    
+    function person(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    person.prototype.say = function(){
+        alert('我叫'+this.name);
+    }
+    let ff = new person('小明',18,'男')
+    let cc = new person('小花',17,'女')
+    ff.say()
+    cc.say()
+    
+    </script>
+</body>
+</html>

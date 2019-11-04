@@ -10,13 +10,13 @@
        函数 => 复用
     
        工厂模式 ：有初始化、加工、出厂
-
+       
        工厂模式的目的就是为了批量生产对象
      */
 
-     function person(name,age,job,set){
-         let obj = new Object();//初始化
-
+     function person(name,age,job,sex){
+        //  let obj = new Object();
+         let obj = {}; //初始化
          // 加工
          obj.name = name;
          obj.age = age;
@@ -29,6 +29,7 @@
 
      let  obj = person('小明','17','前端开发工程师','男');
      let obj2 = person('小黑','18','拾荒者','男') 
+     console.log(obj)
     
     
     </script>

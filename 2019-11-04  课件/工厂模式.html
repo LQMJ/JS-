@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+    
+      工厂模式为了*批量*生产
+
+      函数 目的是为了复用
+
+     */
+
+     // 描述具体事务
+     let obj= {
+         name:'zhufneg',
+         age:10
+     }
+     let obj2 = {
+         name:'mengji',
+         age:5
+     }
+     let obj3 = {
+         name:'xiaochi',
+         age:2
+     }
+
+     function fn(name,age){
+         let obj = {}; // 初始化
+         obj.name = neme; // 加工
+         obj.age = age;
+         return obj; // 出厂
+     }
+     let obj = fn('zhu',10)
+    
+    
+    
+    </script>
+</body>
+</html>
