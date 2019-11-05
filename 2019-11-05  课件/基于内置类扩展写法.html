@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+    
+     push
+
+     Array.prototype.push
+    
+     */
+    // let ary = [1,2,3] // ary是Array的实例
+    // Array.prototype.myPush = function (...arg){ //...arg 将实参收缩成一个数组
+    //   let nay = this.concat(arg)  // 创建一个新数组
+    //   let len = nay.length;    // 新数组的length
+    //   for(var i = 0 ;i<nay.len;i++){   // 循环新数组
+    //       this[i] = nay[i]    
+    //   }
+    //   return len;
+    //  }
+    // console.log(ary.myPush(4,5,6))//6
+
+    /* 
+       链式调用：
+       let ary = [1,2,3]
+        console.log(ary.concat([4,5,6]).concat([7,8]));// [1,2,3,4,5,6,7,8]
+
+        console.log(ary.concat([4,5],[6,7]));// [1,2,,34,5,6,7]
+     */
+    //   let ary = [1,2,3]
+    //  Array.prototype.myConcat = function(...arg){ //剩余运算符 [[1,4,5],[2,3,4]]
+    //     let nry = [...this,...arg] // [1,2,3,[1,4,5],[2,3,4]]
+    //     let len = nry.length;
+    //    return nry.flat(Infinity)
+    //  } 
+    //  console.log(ary.myConcat([1,4,5],[2,3,4]))
+
+    let  ary = [[[[[[1]]]]]]
+    Array.prototype.myflat = function(...arg){
+        let nry = []
+        let len = this.length;
+        let  num = 0;
+        for(var i= 0;i<this.len;i++){
+            alert(1)
+            if(this[i] instanceof Array){
+                myflat()
+                num++ ;
+            }
+            nry.push()
+        }
+        return nry;
+    }
+    console.log(ary.myflat())
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     function Fn(){
+         this.x = 100;
+         this.y = 200;
+         this.getX = function(){
+             console.log(this.x);
+         }
+     }
+     Fn.prototype =  {
+         y:400,
+         getX:function(){
+           console.log(this.x);
+         },
+         getY:function(){
+             console.log(this.y);
+         },
+         sum:function(){
+             console.log(this.x+this.y);
+         }
+     };
+     var f1 = new Fn();
+     var f2 = new Fn;
+     console.log(f1.getX === f2.getX);// false  f1和f2都是Fn的实例化对象，虽然有相同的属性，但是对象跟对象的空间地址不同所以是false
+     console.log(f1.getY === f2.getY);// true  f1和f2都是Fn的实例化对象,他们要找getYZ这个属性，实例本身没有，所以通过__proto__ 去找Fn的prototype，他们找的是同一个空间地址下的getY，所以是true;
+     console.log(f1.__proto__.getY === Fn.prototype.getY)//true 实例f1的原型链全等于Fn构造函数的原型
+     console.log(f1.__proto__.getX === f2.getX);// false  实例f1通过原型链找到的getX是在Fn的原型下的，但f2的getX是在Fn构造函数本身里找到的
+     console.log(f1.getX === Fn.prototype.getX)// false  f1的getX是在Fn构造函数本身里找到的并没有区Fn的原型下找，所以是false
+     console.log(f1.constructor); // Object 因为Fn的prototype被强行赋值了一个对象，所以f1的构造函数由Fn(){}被改变成了一个Object
+     console.log(Fn.prototype.__proto__.constructor);// Object 因为Fn下的原型下的原型链找的Object的prototype是一个对象，所以他的构造函数是一个Object
+     f1.__proto__.getX();// undefined
+     f2.getY(); // 200  this是实例f2
+     Fn.prototype.getY(); //400
+     f1.sum(); //300
+     Fn.prototype.sum(); // this.x = undefined  this.y = 400 ;undefined+400 = NaN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>
