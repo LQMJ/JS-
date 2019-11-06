@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /*
+        1.window
+            全局打印this
+            函数 + 括号
+            定时器
+            (function(){})()
+
+            function fn(){        // 函数名+()调用
+                console.log(this);//window
+            }
+            fn()
+
+            document.onclick = fn();  函数名+()调用
+            function fn(){
+                console.log(this);// window
+            }
+
+            document.onclick = (function(){   // 匿名函数自执行
+                    console.log(this); // window
+                    return function fn(){
+                   console.log(this); // document
+                  }
+            })();
+
+            document.onclick = function(){
+              setTimeout(fn,1000);
+            function fn(){
+               console.log(this);  // window
+              }
+            }
+
+            // var name = '小名';
+                var obj = {
+                    name:'zf',
+                    getName:function(){
+                        console.log(this.name);// window.name
+                    }
+                }
+             setTimeout(obj.getName,1000); // 定时器调用
+
+    // obj.getName();
+  
+
+        2.事件触发的元素
+            只要是事件函数内的this都指向事件触发的元素
+
+            document.onclick = function(){
+                console.log(this);// document
+            }
+
+
+
+        3.点前面的主
+          let obj = {
+              name:function fn(){
+               console.log(this) // obj 这个对象
+              }
+          }
+         obj.name()
+
+        4.实例
+            构造函数下的this是实例，构造函数原型的this也是实例(实例调用)
+
+            function fn(){
+                console.log(this) // fn{}
+            }
+            let ff = new fn = fn{}
+
+        5.箭头函数
+            指向的是声明箭头函数的上下文this
+
+            没有arguments，不能new
+
+             document.onclick = function(){
+             let fn = ()=> {
+              console.log(this); // document
+             }
+             fn();
+          }
+    */    
+    
+    // document.onclick = function(){
+    //     setTimeout(fn,1000);
+    //         function fn(){
+    //            console.log(this);  // window
+    //           }
+    //         }
+    // let obj = {
+    //           name:function fn(){
+    //            console.log(this) // obj 这个对象
+    //           }
+    //       }
+    //      obj.name() 
+    function fn(){
+                console.log(this)
+            }
+            let ff = new fn   
+    </script>
+</body>
+</html>

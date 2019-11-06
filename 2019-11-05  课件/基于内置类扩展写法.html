@@ -40,21 +40,20 @@
     //  console.log(ary.myConcat([1,4,5],[2,3,4]))
 
     let  ary = [[[[[[1]]]]]]
-    Array.prototype.myflat = function(...arg){
-        let nry = []
-        let len = this.length;
-        let  num = 0;
-        for(var i= 0;i<this.len;i++){
-            alert(1)
-            if(this[i] instanceof Array){
-                myflat()
-                num++ ;
+    let ary2 =[];
+    Array.prototype.myFlat = function(){
+        console.log(this)
+        this.forEach(item=>{
+            if(item instanceof Array){
+                item.myFlat();
+            }else{
+                ary2.push(item);  //[...ary2,...item]
             }
-            nry.push()
-        }
-        return nry;
+        });
+        return ary2;
     }
-    console.log(ary.myflat())
+    ary.__proto__.myFlat(ary);
+    console.log(ary2.myFlat())
     </script>
 </body>
 </html>
