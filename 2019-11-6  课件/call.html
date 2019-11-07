@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <script>
+
+    /* 
+
+        所有的数据都有一个toString的方法，但是写法是不一样的
+        唯独Object的toString能够去检测当前的数据类型，所以
+        可以把this改变，达到我们的目的
+
+         Object.prototype.toString.call()
+
+         Array的toString，除了数组本身,null和undefined别的也都能检测当前的数据类型
+
+         Array.prototype.toString.call()   
+     */
+
+     console.log(   Object.prototype.toString.call([1]))// [object Array]
+     console.log( Array.prototype.toString.call('7') )// [object String]
+     console.log(Array.prototype.toString.call(null || undefined)) // 报错
+
+    /* 
+       把类数组转成数组：
+             Arrar.from() 
+             Array.prototype.slice.call()
+
+             slice返回一个新的数组，不传参就是把整个数组返回
+    
+     */
+     const ul = document.getElementById('box')
+     const li = ul.querySelectorAll(' li')
+   
+    console.log(Array.prototype.slice.call(li)
+    )//[li, li, li, li, li, li, li]
+    console.log(Array.from(li)
+    )//[li, li, li, li, li, li, li]
+
+
+    /* 
+       取一个数组中的最大值
+
+       let ary = [1,2,3,4]
+       Math.max(...ary) // 扩展运算符
+       Math.max.apply(null,ary) // unll和undefined不会改变this指向
+    
+     */
+     let ary = [1,2,3,4]
+     console.log(Math.max.apply(null,ary))//4
+     console.log(Math.max(...ary))//4
+    
+    </script>
+</body>
+</html>

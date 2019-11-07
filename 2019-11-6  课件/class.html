@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <script>
+      /* 
+        class 类名{
+            constructor{
+                //给自身添加属性或者方法，就必需要写constructor
+            }
+        }
+       */
+    class Tob{
+        constructor(id){ 
+        this.ul = document.getElementById(id) 
+        this.li = this.ul.querySelectorAll('li')
+        // console.log(this.ul)
+        // console.log(this.li)
+        this.say()
+        }
+        say(){
+            console.log(this.li)
+        }
+        haha = function(){
+            
+        };
+    }
+    let f = new Tob('box')
+
+    Tob.prototype = {
+           haha:10
+        //如果使用类那么不能直接修改类的原型地址
+    }
+    console.log(f.haha) // undefined
+    console.dir(Tob)
+    console.dir(f)
+    </script>
+</body>
+</html>

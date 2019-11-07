@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box,#box2,#box3{
+        width: 500px;
+        height: 150px;
+    }
+    #box div,#box2 div,#box3 div{
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+        display: none;
+    }
+    .active{
+        background: yellow;
+    }
+    #box div.show,#box2 div.show,#box3 div.show {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+            <button class="active">按钮一</button>
+            <button>按钮二</button>
+            <button>按钮三</button>
+            <div class="show">111</div>
+            <div>222</div>
+            <div>333</div>
+    </div>
+    <div id="box2">
+            <button class="active">按钮一</button>
+            <button>按钮二</button>
+            <button>按钮三</button>
+            <div class="show">111</div>
+            <div>222</div>
+            <div>333</div>
+    </div>
+    <div id="box3">
+            <button class="active">按钮一</button>
+            <button>按钮二</button>
+            <button>按钮三</button>
+            <div class="show">111</div>
+            <div>222</div>
+            <div>333</div>
+    </div>
+    <button id="btn">让第一个开</button>
+    <button id="btn2">让第三个关</button>
+    <button id="btn3">让开的关关的开</button>
+    <script>
+      function Tob(id){
+          this.box = document.getElementById(id);
+        //   console.log(this.box)
+          this.btns = this.box.querySelectorAll('button');
+        //   console.log(this.btns)
+          this.divs = this.box.querySelectorAll('div')
+          this.prev = 0;
+          this.timer = null;
+          this.num = 0;
+      }
+      Tob.prototype.dj = function(){ // 点击事件
+          let than = this;
+         this.btns.forEach((item,index) => {
+             item.onclick = function(){
+               than.change(index)
+             }
+          });
+      }
+
+      Tob.prototype.change = function(index){  // 大清洗
+          this.btns[this.prev].className = '';
+          this.divs[this.prev].className = '';
+          this.btns[index].className = 'active';
+          this.divs[index].className = 'show';
+          this.prev = index
+      }
+
+      Tob.prototype.hr = function(){
+         let than = this;
+          this.btns.forEach((item,index)=>{ // 滑入事件
+            item.onmouseover = function(){
+           than.change(index)
+          }
+          })
+      }
+
+      Tob.prototype.zdbf =function(){  // 自动清洗
+          this.timer = setInterval(()=>{
+             this.num ++;
+             this.num %= 3;
+             this.change(this.num);
+          },1000)
+      }
+      Tob.prototype.stop =function(){
+          clearInterval(this.timer)
+          this.timer = null;
+      }
+      Tob.prototype.ouat =function(){
+          return this.timer;
+      }
+    btn.onclick =function(){
+        f.zdbf()
+    }
+    btn2.onclick = function(){
+       l.stop()
+    }
+    btn3.onclick =function(){
+        f.ouat()?f.stop():f.zdbf();
+        x.ouat()?x.stop():x.zdbf();
+        l.ouat()?l.stop():l.zdbf();
+    }
+      let f = new Tob('box')
+    //   f.dj()
+      let x = new Tob('box2')
+    //   x.hr()
+      let l = new Tob('box3')
+      l.zdbf()
+     
+    
+    
+    </script>
+</body>
+</html>

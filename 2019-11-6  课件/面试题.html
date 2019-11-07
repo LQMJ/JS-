@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+      /*
+      
+       var  a = 1;
+      a.a = 2; // 原始类型上添加自定义属性
+      console.log(a.a)//undefined 
+      
+
+     
+      */
+     const x = {
+        a:1,
+        c:{
+            a:3,
+            c:{
+                a:5,
+                d:function(){
+                    console.log(this.a)
+                }
+            }
+        }
+    }
+    const y = x.c.c.d;
+    x.c.c.d(); // 5 this指向点前面的c
+    y(); //  undefined  this指向window window下找不到a这个属性，所以是undefined
+    
+    
+    </script>
+    
+</body>
+</html>

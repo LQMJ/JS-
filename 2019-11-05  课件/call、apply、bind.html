@@ -17,14 +17,14 @@
             第二个参数之后: 函数的实参
 
             function fn(a,b){
-                console.log(this,a,b);// document 7 undefined
+                console.log(this,a,b);// document 7 8
             }
             fn.call(document,7,8)
 
         apply:有2个参数
 
             第一个参数:修改this指向
-            第二个参数: 数组，数组里面放的是实参
+            第二个参数: []，数组里面放的是实参
 
             function fn(a,b){
                 console.log(this,a,b);// document 1 2
@@ -43,8 +43,7 @@
             fn.bind(document)(1,2)// 必须调用
 
     
-        细节:
-            在使用它们修改this的时候，不要传null和undefined，因为传了也不认还是走默认的window
+        注意: 在使用它们修改this的时候，不要传null和undefined，因为传了也不认还是走默认的window
 
 
     */

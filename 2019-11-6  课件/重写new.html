@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /* 
+        call(that,多个)
+        apply(that,两个)
+        bind(that,多个)
+
+        共同特点：
+        （1）都是函数天生自带的
+        （2）第一个参数都是改变this指向的
+
+        第一个参数传null和undefined都是（无效的），this指向都是window；
+
+        构造函数的特点：
+        1.this是实例
+        2.默认return实例，如果return为引用类型就为引用类型
+        3.实例的原型链 === 构造函数的原型
+        4.可以不加括号调用
+
+     */
+
+     function Fn(name){
+         this.name = name;
+         this.age = age;
+         return function fx(){};//return为引用类型就为引用类型
+     }
+     let f = New(Fn,'小明')// -> new Fn('小明')
+     console.log(f.constructor)   // Fn(name){}
+
+    function New(ff,...ary){
+        let obj = new Object; //实例
+        let callback = Fn.call(obj,...ary);// 把构造函数的this改变成实例
+        obj.__proto__ = Fn.prototype;//让实例的原型链等于构造函数的原型
+        // if(callback != null && typeof callback === 'objcet' || typeof callback === 'function'){
+        //     return callback;//
+        // }
+        /* 
+            如果return的是对象类型或者函数，那么构造函数return的就是这个引用类型
+         */
+        if(callback instanceof Object || callback instanceof Function){
+            return callback;
+        }
+       return obj;//默认return实例
+    }
+    console.log(f)
+</script>    
+</body>
+</html>

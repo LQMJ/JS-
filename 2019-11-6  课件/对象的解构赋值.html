@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <input type="text" id="input">
+    <script>
+     /* 
+       let {key1,key2} = {key1:val1,key2:val2}
+
+       在声明时候使用块{}声明，块中放对象的key值{key}，这里的key值一定要和解构对象的key值名字要一致
+
+       如果要取别名，使用新定义的名字即可
+       let {key1:k} = {key1:val1}
+       此时key1已经访问不到了，要访问就报错，只能访问k，k就代表key1
+       名字跟声明变量规则一致
+       console.log(key1)// 报错
+       console.log(k) // val1
+
+      如果加了:不报错，那么可以先结构一次，再重命名
+
+      let {f,f:x} = {f:{name:'小明',age:22}}
+      console.log(f) //{name:'小明',age:22}
+      console.log(x) // {name:'小明'age:22}
+     
+      */
+    
+      // let {f,f:x} = {f:{name:'小明',age:22}}
+      // console.log(f,x) 
+      // console.dir(console)
+      // let {log,dir} = console
+      // log(1)
+      // dir(Array)
+
+      
+ /*   
+   let obj = {
+        p: [
+            'Hello',
+            {
+                y: 'World',
+                z:{
+                    x:[
+                        {
+                            j:0
+                        }
+                    ]
+                }
+            }
+        ]
+    };
+    let {p:[x,{y,z,z:{x:[{j}]}}]} = obj
+       
+    console.log(x) // 'Hello' 
+    console.log(y) //  'World'
+    console.log(z) // {x:[{j:0}]}
+    console.log(j) // 0 
+    */
+
+  /*  const node = {
+        loc: {
+            start: {
+                line: 1,
+                column: 5
+            }
+        }
+    };
+
+    let {loc, loc:{start}, loc: { start: { line }} } = node;
+
+   console.log(loc);// {start:{line:1,column:5}}
+    console.log(start) // {line:1,column:5}
+    console.log(line) // 1
+ */
+
+  /*
+    let obj = {};
+    let arr = [];
+    // foo->123  -> obj.prop = 123 
+    ({ foo: obj.prop, bar: arr[0] } = { foo: 123, bar: true });
+
+    console.log(obj);// {prop:123}
+    console.log(arr); //[123]
+    obj.prop = {}.foo;
+
+ */
+   var {x, y = 5} = {x: 1};
+    console.log(x,y); //1 5
+
+    // const input = document.getElementById('input')
+    // input.value = 111;
+    // let {value:val} = input // input自带value属性
+    // console.log(val) // 111
+
+     function move({x, y} = { x: 0, y: 0 })
+     { //形参赋默认值 
+        return [x, y]; // 0 0
+      }
+      const {log} = console;
+      log( move())// 0 0
+      log(move({x: 3, y: 8}));  //3,8
+      log( move( {x: 3} )); //3,undefined
+      log( move({}));//undefined,undefined
+      log([1, undefined, 3].map((item='yes') => item) );// [1, "yes", 3]
+    </script>
+</body>
+</html>

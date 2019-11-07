@@ -32,6 +32,7 @@
         console.log(ary.concat([4,5],[6,7]));// [1,2,,34,5,6,7]
      */
     //   let ary = [1,2,3]
+    //    myConcat
     //  Array.prototype.myConcat = function(...arg){ //剩余运算符 [[1,4,5],[2,3,4]]
     //     let nry = [...this,...arg] // [1,2,3,[1,4,5],[2,3,4]]
     //     let len = nry.length;
@@ -39,10 +40,16 @@
     //  } 
     //  console.log(ary.myConcat([1,4,5],[2,3,4]))
 
-    let  ary = [[[[[[1]]]]]]
-    let ary2 =[];
+    
+
+  /*   
+        myFlat  数组扁平化
+  
+   let ary = [[[[[[1]]]]]]
+    let ary2 = []
+
     Array.prototype.myFlat = function(){
-        console.log(this)
+        // console.log(this)
         this.forEach(item=>{
             if(item instanceof Array){
                 item.myFlat();
@@ -52,8 +59,8 @@
         });
         return ary2;
     }
-    ary.__proto__.myFlat(ary);
-    console.log(ary2.myFlat())
+    // ary.__proto__.myFlat(ary);
+    console.log(ary.myFlat()) */
     </script>
 </body>
 </html>
