@@ -56,8 +56,8 @@
     <button id="btn">让第一个开</button>
     <button id="btn2">让第三个关</button>
     <button id="btn3">让开的关关的开</button>
-    <script>
-      function Tob(id){
+<script>
+    function Tob(id){
           this.box = document.getElementById(id);
         //   console.log(this.box)
           this.btns = this.box.querySelectorAll('button');
@@ -93,7 +93,7 @@
           })
       }
 
-      Tob.prototype.zdbf =function(){  // 自动清洗
+      Tob.prototype.zdbf =function(){  // 自动播放
           this.timer = setInterval(()=>{
              this.num ++;
              this.num %= 3;
@@ -127,6 +127,6 @@
      
     
     
-    </script>
+</script>
 </body>
 </html>

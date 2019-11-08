@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+        Object.assign(子类.prototype,父类.prototype))  浅拷贝（克隆）
+
+        Object.assign(obj2,obj1,obj)
+
+        从左到右浅拷贝对象的属性，可以放若干对象
+
+        浅拷贝的弊端：如果对象的属性值是引用类型，那么赋值还是赋址；
+    
+        如果不是赋址是赋值就解决了赋址问题
+    
+     */
+    let prototype1 = {
+        obj:{}
+    }
+    let prototype2 = {};
+    // prototype2 = prototype1;// 赋址关系
+
+    // for(let attr in prototype1){
+    //     // for in会枚举当前对象原型下的属性或者方法，使用hasOwnProperty就能只找对象自身的属性了
+    //     if(prototype1.hasOwnProperty(attr)){
+    //         prototype2[attr] = prototype1[attr]
+    //     }
+    // }
+    // console.log(prototype2)
+    
+    // 浅拷贝
+    // console.dir(Object) .assign
+    Object.assign(prototype2,prototype1)
+    // console.log(prototype2)
+
+    // prototype2.say = function(){
+    //     console.log('我是警察')
+    // }
+    prototype2.obj.name = '小明'; 
+   console.log(prototype2.obj)
+   console.log(prototype1.obj)
+   
+
+ // 深度克隆
+   let ary = [1,2,3,[1,2,3,{name:[1,2,3]}]];
+    function deepclone(obj){
+        //确认传进来的值是数组还是对象
+        // let x = Array.isArray(obj)?[]:{}
+        let x = obj.push?[]:{};
+        for(let attr in obj){
+            if(obj[attr] instanceof Object ||obj[attr] instanceof Array){
+                //如果碰到了引用类型就继续循环,原始类型才赋值
+                x[attr] = deepclone(obj[attr]);
+            }else{
+                x[attr] = obj[attr]
+            }
+        }
+        return x;
+    }
+    console.log(deepclone(ary))
+    
+    
+    </script>
+</body>
+</html>

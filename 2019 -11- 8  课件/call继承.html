@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+     /* 
+       面向对象的特征：封装、继承、多态
+
+       继承：子类具有父类的一部分特征，正部分相同的特征是从父类身上继承下来的，自己还有自己的特征；
+
+       继承的方式：类式继承（call继承）
+       原型继承
+       寄生式组合继承
+       拷贝继承
+       对象继承
+       class继承 
+       ......
+
+       继承的结果：子类能够继承父类的属性和方法。
+
+       继承属性：（call继承）
+       调用父类，通过call把this变为子类的实例即可
+
+       、、、
+
+           function police(name,age){
+               //this -> 子类实例
+               person.call(this,name,age);
+               console.log(this) // 父类实例
+           }
+
+       、、、
+         
+      */
+// 函数 、类、实例
+   function person(name,age){ // 人
+       this.name = name;
+       this.age = age;
+   }
+   person.prototype.say = function(){
+       alert('我的名字叫'+this.name);
+   }
+
+//    person.prototype = police.prototype 这种写法不可取，因为两个原型赋值是赋址，改变其中任意一个的属性另一个也会改变
+
+
+   function police(name,age){ // 警察
+       person.call(this,name,age);
+       //通过call把父类的this变为子类的this 
+   }
+   police.prototype.say = function(){
+    //    alert('我是警察');
+     alert('我的名字叫'+this.name); // this.name就是继承父类的
+   }
+   let p = new person('小明',17)
+   let p2 = new police('小黑',18)
+   p2.say()
+   p.say()
+    
+    
+    
+    </script>
+</body>
+</html>

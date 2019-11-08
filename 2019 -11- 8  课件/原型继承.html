@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+       原型继承  // 浅克隆
+
+        子类.prototype = new 父类 
+        子类的原型 = 父类的实例
+      */
+    
+    function person(name,age){
+        this.name = name;
+        this.age = age ;
+        console.log('上头')
+    }
+    person.prototype.ff={
+        obj:{}
+    }
+    person.prototype.say = function(){
+        alert('我的名字'+this.name);
+    }
+    function police(name,age){
+        person.call(this,name,age);
+    }
+    // paohui的原型赋址person的原型，指的是person原型的地址，police的原型指向paohui的实例，指向的是paohui的实例的地址;// 继承方法
+    function paohui(){};
+    paohui.prototype = person.prototype;
+    police.prototype = new paohui;
+    police.prototype.constructor = police;
+    let p2 = new police('小明',17);
+    let p1 = new person('小黑',19);
+    p2.ff.obj.xx = 10;
+    console.log(p2.ff) // {xx:10}
+    console.log(p1.ff) // {xx:10}
+    p2.say() 
+    p1.say()
+    </script>
+</body>
+</html>

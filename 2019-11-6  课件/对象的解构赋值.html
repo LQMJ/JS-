@@ -103,7 +103,7 @@
       log(move({x: 3, y: 8}));  //3,8
       log( move( {x: 3} )); //3,undefined
       log( move({}));//undefined,undefined
-      log([1, undefined, 3].map((item='yes') => item) );// [1, "yes", 3]
+      log([1, undefined, 3].map((item='yes') => item) );// 'yes'是item的初始值，undefined没有初始值大[1, "yes", 3]
     </script>
 </body>
 </html>

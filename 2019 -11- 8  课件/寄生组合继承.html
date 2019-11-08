@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+
+      寄生组合继承： Object.create()
+      子类.prototype = Object.create(父类.protoptype
+      
+     */
+
+     function person(name,age){
+        this.name = name;
+        this.age = age ;
+        console.log('上头')
+    }
+    person.prototype.ff={
+        obj:{}
+    }
+    person.prototype.say = function(){
+        alert('我的名字'+this.name);
+    }
+    function police(name,age){
+        person.call(this,name,age);
+    }
+
+    police.prototype = Object.create(person.prototype); //寄生式组合
+    
+    let p2 = new police('小明',17);
+    let p1 = new person('小黑',19);
+    p2.ff.obj.xx = 10;
+    console.log(p2.ff) // {xx:10}
+    console.log(p1.ff) // {xx:10}
+    p2.say() 
+    p1.say()
+
+    
+    </script>
+</body>
+</html>
