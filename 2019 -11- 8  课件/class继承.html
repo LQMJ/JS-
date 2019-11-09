@@ -11,7 +11,7 @@
          通过class中的static可以创建静态方法，只有类才能调用，实例是调用不到的;就算是继承，也只能继承子类去调用，子类的实例是调用不到的;
        */
        class person {
-           static eat(){
+           static eat(){ //静态方法。只有类才能调用，实例是调用不到的
                console.log('饭桶')
            }
            constructor(name,age){
@@ -22,6 +22,7 @@
                alert(`我的名字叫`+this.name)
            }
        }
+    //    person.prototype.obj ={}
        class police extends person{
            //在继承的constructor中，要使用this，一定要super
            constructor(job,...arg){
@@ -38,6 +39,8 @@
        }
        let p2 = new police('警察','光明',19)
        let p1 = new person('正义',18)
+    //    p2.obj.fff = 10;
+    //    console.log(p2.obj.fff) //10
        p2.say()
     //    p2.xx()
     //    p1.say()
