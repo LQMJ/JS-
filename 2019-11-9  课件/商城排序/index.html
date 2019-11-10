@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/1.css">
+</head>
+<body>
+    <section class="box">
+        <nav>
+            <span>排序</span>
+            <a href="javascript:void(0);" data-name="time">
+                <i class="up"></i>
+                <i class="down"></i>
+                上架时间
+            </a>
+            <a href="javascript:void(0);" data-name="hot">
+                <i class="up"></i>
+                <i class="down"></i>
+                热度
+            </a>
+            <a href="javascript:void(0);" data-name="price">
+                <i class="up "></i>
+                <i class="down"></i>
+                价钱
+            </a>
+            <div>
+                <select id="sele">
+                    <option value="title">按照文字搜索</option>
+                    <option value="hot">按照热度搜索</option>
+                    <option value="price">按照价格搜索</option>   
+                </select>
+               <div id="num" class="hide">
+                    从<input type="text" id="start"> 
+                    到<input type="text" id="end">
+               </div>
+               <div id="txt" class="show">
+                    <input type="text" id="txt1">
+               </div>
+               
+
+
+                <button id="search">搜索</button>
+                <button id="init">还原</button>
+            </div>
+        </nav>
+        <ul class="list" id="ul">
+            <!-- <li>
+                <img src="./img/2.jpg" alt="">
+                <p>商品名称:<span>dsdsadsads</span></p>
+                <p>上架时间:<span>2019-10-10</span></p>
+                <p>商品热度:<span>32</span></p>
+                <p>商品价格::<span>200</span></p>
+            </li> -->
+        </ul>
+       
+   </section>
+<!-- <script src="./json/product.js"></script> -->
+<script>
+    /*
+        live server 插件
+        http://127.0.0.1:5500/index.html 使用右键选择 open with live server
+
+
+        json文件需要通过服务器环境去拿，安装live server的目的是在编辑器中开一个服务器
+        当开了服务器之后，就可以通过http请求（fetch）的方式拿到json文件
+
+
+
+        11月9日 我们开始进行ajax请求
+
+        fetch(文件路径).then(d=>d.json())
+        .then(data=>{
+            console.log(data);
+        }
+
+        需求:
+            1.请求数据，拿到那10个数据
+            2.把数据变成页面结构（把数据渲染到页面）
+            3.排序:
+                上架时间排序
+                热度排序
+                价格排序
+            
+            4.扩展功能:
+                搜索:
+                    按照商品名称搜索
+                    按照商品价格搜索
+                    按照商品热度搜索
+    */
+    // console.log(fetch);
+    fetch('./json/product.json')
+    .then(d=>d.json())
+    .then(data =>{
+        console.log(data);
+       class Sppx{
+           constructor(data){
+            this.newdata = data.concat();//复制一份新数组，为了一会排序的时候不影响原数组
+            this.a = document.querySelectorAll('a') // 获取a标签
+            console.log(this.a)
+            this.start = document.querySelector('#start') //开始
+            this.end = document.querySelector('#end') //结束
+            this.search = document.querySelector('#search') // 搜索
+            this.init = document.querySelector('#init')// 还原 
+            this.txt1 = document.querySelector('#txt1') //  文字搜索框
+            this.sele = document.querySelector('#sele') // 下拉框
+            this.num = document.querySelector('#num') // 开始和结束两个框
+            this.txt = document.querySelector('#txt')  // 一个搜索框
+            this.lis = [];
+            this.xrsj(data)
+            this.pxsj(this.newdata)
+            this.sssj()
+            this.bksj()
+           }
+           xrsj(kk){ // 渲染事件
+               this.lis = kk.map(({title,img,price,time,hot})=>{ // 循环复制的这个新数组
+                 return ( 
+                     `<li>
+                        <img src="${img}" alt="">
+                        
+                      <p>商品名称:<span>${title.substr(0,6)}</span></p>
+                      <p>上架时间:<span>${time}</span></p>
+                      <p>商品热度:<span>${hot}</span></p>
+                      <p>商品价格::<span>${price}</span></p>
+                </li>`
+                 );
+              }).join('')
+              ul.innerHTML = this.lis;  // 渲染到页面中
+           }  
+           pxsj(dd){ // 排序事件
+           this.a.forEach((item,index)=>{ //循环要点击的标签
+               let that = this
+               item.onoff = true; //  开关 默认为true 从小到大
+                 item.onclick =function(){ // 点击事件
+                    //  alert(1)
+                     if(this.onoff){
+                        // console.log(that.newdata)
+                        that.newdata.sort((x,y)=>{  // 重新排序
+                           if(this.dataset.name === 'time'){ 
+                               return new Date(x.time) - new Date(y.time)
+                           }else{ // 否则按照数据相减的方式
+                               return x[this.dataset.name] - y[this.dataset.name]  // 从小到大升序
+                           }
+                        })
+                     }else{
+                         that.newdata.sort((x,y)=>{ 
+                             if(this.dataset.name === 'time'){ 
+                                return new Date(y.time) - new Date(x.time)
+                             }else{
+                                return y[this.dataset.name] - x[this.dataset.name] // 从大到小降序
+                             }
+                         })
+                     }
+                     item.onoff = !item.onoff  
+                     that.xrsj(that.newdata)
+                 }
+           })
+        }
+        sssj(){ //搜索事件
+             let that = this;
+            this.search.onclick = function(){  // 点击搜索
+                let {value:v1} = that.txt1;
+                let {value:v2} = that.start;
+                let {value:v3} = that.end;
+                let {value:v4} = that.sele;
+                let d = null;
+                if(v1 || v2 && v3){
+                    if(v1){
+                       d = data.filter((item)=>{ //搜文字
+                            return item[v4].includes((v1))
+                        })
+                    }else{
+                       d = data.filter((item)=>{  //搜数字
+                           return item[v4] >= v2 && item[v4] <= v3;
+                       })
+                    }
+                    that.xrsj(d)
+                    that.init.onclick =function(){ // 点击还原
+                        that.xrsj(data);
+                    } 
+                }else{
+                    alert('请输入正确内容')
+                }
+            }
+        }
+        bksj(){ // 变框事件
+                let that = this;
+                this.sele.onchange =function(){ // onchange事件当sele的value值被改变的时候触发
+                    that.txt1.value = that.start.value = that.end.value = '';
+                   if(that.sele.value === 'title'){
+                       that.num.display= 'none';  // 隐藏
+                       that.txt.display = 'inline-block'; // 显示
+                   }else{
+                   that.num.className = 'inline-block';// 显示
+                   that.txt.className = 'none';// 隐藏
+                }
+                }      
+        }
+        }
+        new Sppx(data)
+     })
+</script>
+
+</body>
+</html>
