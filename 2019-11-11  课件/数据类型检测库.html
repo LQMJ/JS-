@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+    
+      检测一个变量是一个什么数据类型
+
+      Object.prototype.toString.call(数据) ===
+    
+     */
+    
+    //  console.log(Object.prototype.toString.call('23'))//[object String]
+
+    // class Tools{
+    //     static type(data){  // 静态方法，只有类才可以调用，实例是调用不到的
+    //         if(typeof data !== 'object'){
+    //             return typeof data;  // typeof 检测出来是小写的字符串
+    //         }
+    //         let obj ={object:'Object',array:'Array',null:'Null'}
+    //         for(let attr in obj){   // 循环对象
+    //             if(Object.prototype.toString.call(data)===`[object ${obj[attr]}]`){
+    //                 return attr;    // 返回key值;key值是字符串类型的
+    //             } 
+    //         }
+    //     }
+    // }
+    // console.log(Tools.type([]))
+
+      class Tools{
+          static type(data){
+              if(typeof data !== 'object'){
+                  return typeof data;
+              }else{
+                  switch(Object.prototype.toString.call(data)){ // 检测参数的数据类型 
+                    case '[object Null]':   // 如果条件 === '[object Null]'
+                    return  'null';          // 就return 'null'
+                    case '[object Array]':
+                    return 'array';
+                    case '[object Object]':
+                    return 'object';
+
+                  }
+              }
+          }
+      }
+      console.log(Tools.type([])) // array
+    </script>
+</body>
+</html>

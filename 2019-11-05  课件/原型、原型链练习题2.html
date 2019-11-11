@@ -7,12 +7,21 @@
 <body>
     <script>
         /* 
+        先变量提升
         Foo = function(){}
         var getName  // 被干掉
-        getName = function(){console.log(5);} 被干掉
+        getName = function(){console.log(5);}   // window下的getNema
         var a,b,c
+
+        变量提升之后： 逐行解读代码赋值 
+        Foo = function(){}
+        Foo.getName = function () {console.log(2);}; 
+        Foo.prototype.getName = function () {console.log(3);};
+        getName = function () {console.log(4);};              // window下的getNema重新赋值   
+
+        开始调用：
         
-        Foo调用   getName = function () {console.log(1);};  window.getName
+         Foo调用   getName = function () {console.log(1);};  // window.getName又重新赋值 
         
         
          */
@@ -26,7 +35,7 @@
     function getName() {console.log(5);} 
 
     Foo.getName();  // 2 
-    getName();  //  5
+    getName();  //  4
     Foo().getName();  // 1
     getName(); // 1 
     var a = new Foo.getName(); // 2 Foo.getName{}

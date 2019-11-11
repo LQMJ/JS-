@@ -16,6 +16,7 @@
         浅拷贝的弊端：如果对象的属性值是引用类型，那么赋值还是赋址；
     
         如果不是赋址是赋值就解决了赋址问题
+
     
      */
     let prototype1 = {
@@ -41,8 +42,8 @@
     //     console.log('我是警察')
     // }
     prototype2.obj.name = '小明'; 
-   console.log(prototype2.obj)
-   console.log(prototype1.obj)
+   console.log(prototype2.obj) //{name: "小明"}
+   console.log(prototype1.obj) //{name: "小明"} //浅克隆 如果对象属性是引用类型还是赋址
    
 
  // 深度克隆

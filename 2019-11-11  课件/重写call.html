@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* 
+         call:函数天生自带的属性;
+
+         作用：改变this指向的
+
+         参数：有多个参数
+              第一个参数是修改this指向的（参数如果是null、undefined，那么this指向还是window）
+              第二个之后都是实参
+        
+        this就是.前面的主
+
+        核心:让一个函数地址等于对象下的某个方法，this自然就变成了那个对象；
+       
+        */
+    
+    Function.prototype.Mycall = function(that,...arg){
+        if(that === null || that === undefined){
+            that = window;
+        }else{
+            switch(typeof that){
+                case 'string':
+                that = new String(that);
+                break;
+                case 'boolean':
+                that = new Boolean(that);
+                break;
+                case 'number':
+                that = new Number(that);
+                break;
+            }
+        }
+        that.fn = this; // 改变this指向
+        // that.fn(...arg); // 调用函数
+        delete that.fn;  // 删除函数
+        console.log(that)
+    }
+    
+    function fn(a,b,c){
+        console.log(a,b,c)
+    }
+    fn.Mycall('23',12,13,14) // String {"23"}
+
+
+
+
+    
+    </script> 
+</body>
+</html>
