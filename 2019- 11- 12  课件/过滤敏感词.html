@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt"><button id="btn">发送</button>
+    <ul id="ul"></ul>
+    <script>
+      let {log:l} = console
+      btn.onclick = function(){
+        let {value:val} = txt;
+        let ff=val;
+        let li = document.createElement('li');
+        ul.appendChild(li)
+        let btns = document.createElement('button')
+        let span = document.createElement('span')
+      
+        // li.innerText = val;
+        btns.innerText = '反和谐'
+        btns.onclick = function(){
+          span.innerText = ff;
+        }
+          let ary = ['羊驼','卧槽']
+          let str = '*%^$@&'
+          let kk = new RegExp(ary.join('|'),'g')
+          val = val.replace(kk,($0)=>{
+            //$0是每次匹配到的敏感词
+            //拿到敏感词之后要看下length。通过length去添加替换文字的个数
+            //拿到0-替换字符串长度的数字
+            let temp = '';
+            for(let i=0;i<$0.length;i++){
+              temp += str[Math.round(Math.random()*str.length-1)];
+            }
+            return temp;
+          })
+         l(val)
+         span.innerText = val;
+         li.appendChild(span)
+         li.appendChild(btns)
+         ul.insertBefore(li,ul.children[0]);
+          txt.value = '';
+         
+      }
+
+    
+    </script>
+</body>
+</html>

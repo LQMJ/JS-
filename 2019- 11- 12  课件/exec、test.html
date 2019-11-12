@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+     /* 
+       正则身上的方法：
+      
+       //.exec(字符串):找到正则匹配的字符串（首次出现的字符【就一次），并且放到数组中（返回的是数组）
+
+       //.test(字符串):查看字符串中是否有规则匹配项，如果有就返回ture，，否则false
+         
+      特殊转意符： \d  一个0~9的数字
+
+      量词： +  至少出现一次，最多不限
+
+      修饰符： g -> global  全局查找
+              i —> ignoreCase  忽略大小写
+
+      RegExp
+     
+      */
+     let {log:l} = console;
+    //   l(typeof /a/) // object
+    //   l(Object.prototype.toString.call(/a/)) //[object RegExp]
+      
+      let str = 'ag23hgy35nay789';
+      // 查看字符串中是否有正则匹配项
+      l(/\d+/.exec(str)) // =>["23", index: 2, input: "ag13hgy35nay789", groups: undefined]
+      // 查看字符串中是否有y这个字符
+      l(/y/.test(str))// true  代表有
+      l(/m/.test(str))// false 代表没有
+
+      /* 
+        ["23", index: 2, input: "ag13hgy35nay789", groups: undefined]
+
+        '23'：为找到的字符
+        index：找到的字符首次出现的位置
+        input：整个字符
+        groupx：undefined
+        length：1
+      
+      
+       */
+   
+   
+   
+   </script> 
+</body>
+</html>

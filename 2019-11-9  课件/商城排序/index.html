@@ -153,8 +153,8 @@
                              }
                          })
                      }
-                     item.onoff = !item.onoff  
-                     that.xrsj(that.newdata)
+                     item.onoff = !item.onoff  // 开关
+                     that.xrsj(that.newdata) // 重新渲染
                  }
            })
         }
@@ -176,7 +176,7 @@
                            return item[v4] >= v2 && item[v4] <= v3;
                        })
                     }
-                    that.xrsj(d)
+                    that.xrsj(d) // 重新渲染
                     that.init.onclick =function(){ // 点击还原
                         that.xrsj(data);
                     } 

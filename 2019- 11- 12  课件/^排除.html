@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+        ^  开头
+
+        如果^在中括号中，代表排除
+     
+      */
+      let {log:l} = console;
+      let str = 'a12ca123ca1234ca45ca67ca89c'
+      l(str.match(/a[^123]+c/g)) //["a45ca67ca89c"]  a开头c结尾，中间排除123 
+
+    
+    
+    
+    </script>
+</body>
+</html>

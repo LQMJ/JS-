@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /* 
+        需求：将下列字符串中的数字包括连续数字挑出来，存到数组中
+        思路: 
+              1.存一个空字符串 str2 = ''
+              2.存一个空数组 ary = []
+              3.循环字符串 for(str)
+              4.判断当前项是不是一个数字，是就进行字符串拼接 str2 += str[i]; 
+              5.如果下一个字符是不是数字，不是就把上次拼接的字符串push到ary中，然后字符串清空
+              6.判断如果for循环完之后，如果发现str2不是一个空字符串，说明最后几位为数字，需要把最后一次拼接的数字放到数组中
+      
+       */
+       let str = 'acs12gagu34bygh78'
+       console.log(str.match(/\d+/g));// \d  0~9之间的数字  量词元字符+：出现一次到多次 修饰符g：global 全局匹配
+       let str2 = '';
+       let ary = [];
+       for(let i = 0;i<str.length;i++){
+           if(!isNaN(parseFloat(str[i]))){ //最后一步完if就不走else了，所以得在下面在家一个if判断
+               str2 += str[i];
+           }else{
+              if(str2){
+                 ary.push(str2)
+                str2 = '';
+               }
+           }
+           if(str2){
+               ary.push(str2)
+               str2 = '';
+           }
+       }
+       console.log(ary)
+    
+    
+    
+    </script>
+</body>
+</html>

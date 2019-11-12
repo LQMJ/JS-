@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* 
+         []中的字符在正则中找任意一个字符[123] ->要么找1要么找2，要么找3
+
+         也可以使用[多少 - 多少]的写法来写
+
+         [0-9] -> \d  ascll码来编排
+
+         小写英文：[a-z]
+         大写英文：[A-Z]
+
+         如果要拿大写和小写的字符：
+         [A-z]写  ×错  因为acsll码的91-96是别的字符不算字母
+         [A-Za-z]写  √对
+
+       */    
+        
+    let{log:l} = console;
+    let str = 'a1ca2ca3ca4c';
+    l(str.match(/a\dc/g)) //  ["a1c", "a2c", "a3c", "a4c"]
+    l(str.match(/a(1|2|3)c/g)); //  ["a1c", "a2c", "a3c"]
+    l(str.match(/a[1-3]c/g)); //  ["a1c", "a2c", "a3c"]
+        
+    let str2 = 'a1cA2ca3^b2b';
+    l(str2.match(/[A-z]\d[A-z]/g));//=>["a1c", "A2c", "a3^", "b2b"]
+    l(str2.match(/[A-Za-z]\d[A-Za-z]/g));// =>["a1c", "A2c", "b2b"]
+
+    ///////////////////////////////////
+
+    // 需求：验证16-99之间才能注册
+
+    /* 
+        ^ 以哪个字符作为开始
+        $ 以哪个字符作为结束
+
+        ^ + $ = 整的字符串都要匹配我的规则
+
+    */
+     let str3 = '107' // ture
+   l(/^(1[6-9]|[2-9][0-9]|10[0-8])$/.test(str3));
+
+   ///////////////////////////////////////
+
+   // 计算出下列字符串的字符字节，假设英文是一个字节，中文是两个字节
+
+   let str4 = '汝之造物主,在此!the creator';
+
+   // 中文的区间范围:[\u4e00-\u9fa5]
+   let num = 0;// 记数
+
+   for(let i=0;i<str4.length;i++){
+      if(/[a-z.,!]/i.test(str4[i])){
+        num++;
+      }else{
+        num += 2;
+      }
+   }
+   
+  //  for(let i=0;i<str4.length;i++){
+  //    if(/[\u4e00-\u9fa5]/i.test(str4[i])){
+  //      num+=2;
+  //    }else{
+  //      num++;
+  //    }
+  //  }
+l(num)
+    
+    </script>
+</body>
+</html>

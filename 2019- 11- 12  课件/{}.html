@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*
+       
+       {} 代表量词
+
+       描述{}前面字符出现的数量
+
+       {m,} 最少m个，最多不限
+       + -> {1,}
+       {m,n} -> {2,5}
+       {n} 最少出现n次，最多也出现n次
+        ? 最少可以没有，最多出现一次  -> {0,1}
+        * 最少可以没有，最多无限 -> {0,}
+     */
+    let {log:l} = console;
+    let str = 'a12ca456ca6789ca56789c'
+    l(str.match(/a\d{0,3}c/g))// ["a12c", "a456c"]
+    l(str.match(/a\d{2}c/g))// ["a12c"]
+    l(str.match(/a\d?c/g)) // null 正则匹配不到的时候
+    l(str.match(/a\d*c/g))// [a12c", "a456c", "a6789c", "a56789c"]
+
+    
+    
+    </script>
+</body>
+</html>

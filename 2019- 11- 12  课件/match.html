@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+        match():字符串的方法
+
+        string.match(//) ：找到正则匹配的字符并且把它们放到数组中（返回值是数组）
+
+        懒惰：你让他找一个，绝对不会找第二个，你让他找一堆，他绝对不会找第二堆
+
+        贪婪：只要符合某个规则就不停的找，直到找不到
+
+        i : 忽略大小写  ignoreCase
+     
+      */
+     
+    let {log:l,dir:d} = console;
+    d(new String()) // match
+    
+    let str = 'MJ12lq34js56nb78';
+    l(str.match(/\d+/g))// => ["12", "34", "56", "78"]
+    l(str.match(/m/ig)) // =>["M"]查找全局是否有m（不管大写还是小写）
+    
+    </script>
+</body>
+</html>
