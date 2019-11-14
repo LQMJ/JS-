@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+          i：忽略单词大小写 
+          g: 全局匹配
+          m：多行匹配
+
+    */
+    let {log:l} = console;
+    let str = `
+       abcdef
+       abcdef
+       abcdef`;
+
+    l(str.match(/f$/mg));
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* 
+       
+         . 除了\n任意字符
+         
+       */
+       let {log:l} = console;
+       let str = 'abc123ABC\n洛奇!@#$%^&';
+
+       l(str.match(/.+/g));// ["abc123ABC", "洛奇!@#$%^&"]
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>

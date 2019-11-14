@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="li clear">1</li>
+        <li>2</li>
+        <li class="li">3</li>
+    </ul>
+    <script>
+    let {log:l} = console;
+    // let li = document.getElementsByTagName('li')
+    // for(let i= 0;i<li.length;i++){
+    // //    l(li[i].className)
+    // if(li[i].className === 'li'){
+    //     li[i].style.background = 'red'
+    // }
+    // }
+    /* 
+      1.找到页面所有的标签
+      2.从这些标签获取带class为li的元素
+      3.找到他们，并且放到数组中
+    
+     */
+
+    function getByClass(cn){
+         // '*' 通配符
+        let elements = document.getElementsByTagName('*')//找到所有的标签
+        l(elements)
+        let ary = [];
+        for(let i=0;i<elements.length;i++){ 
+             // 获取所有class名
+             l(elements[i])
+            let scn = elements[i].className;
+            l(scn)
+             // 然后把获取到的class名都用空格分割 
+            let ary2 = scn.split(' ');
+            l(ary2)
+            //循环分割之后的数组;
+            // ary2.forEach(item=>{
+            //     if(item === cn){
+            //         ary.push(elements[i]);
+            //     }
+            // }); //[li.li.clear, li.li]
+            if(elements[i].className === 'li'){
+                ary.push(elements[i])
+            }
+         }
+         return ary;
+     }
+     l(getByClass('li'))//[li.li]
+
+
+
+    // 正则方法写className  new RegExp
+
+    function getByClass2(cn){
+        let elements = document.getElementsByTagName('*');
+        let ary = [];
+        let re = new RegExp('\\b'+cn+'\\b');
+        l(re)// /\bli\b/
+        for(let i=0;i<elements.length;i++){
+            if(re.test(elements[i].className)){
+                ary.push(elements[i]);
+            }
+        }
+        return ary;
+    }
+    let lis = getByClass2('li')//[li.li.clear, li.li]
+
+    for(let i=0;i<lis.length;i++){
+        lis[i].style.background = 'red';
+    }
+     l(lis)//[li.li.clear, li.li]
+
+    
+    
+    
+    </script>
+</body>
+</html>

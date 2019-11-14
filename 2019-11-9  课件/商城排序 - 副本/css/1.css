@@ -1,0 +1,5 @@
+@import '../css/1.css';
+body {
+  background: rgba(135, 206, 235, 0.3);
+  color: #fff;
+}

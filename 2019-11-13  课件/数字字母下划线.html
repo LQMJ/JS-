@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /* 
+      // 6~18个字符{}，可以使用字母、数字、下划线，须以字母开头
+
+      // \w : 一个数字、字母、下划线
+
+      n76_h1@163.com
+      xxx_lqmj@163.com
+      xxx_32@126.com
+      xx-x_32@139.com
+      xxx_32@mali,com
+      xxx_32@hotmali.com
+      xxx^.32@sina.com
+
+     */
+    let {log:l} = console
+    let str = 'xx-xwer.^@139.com'
+    l(/^[a-zA-Z](\w|\.|-|\^){5,10}@[0-9a-zA-Z]{3}\.c(om|n)$/.test(str));
+
+    l(/^[a-zA-Z].{5,10}@[0-9a-zA-Z]{3}\.c(om|n)$/.test(str));
+
+    
+</script>
+</body>
+</html>

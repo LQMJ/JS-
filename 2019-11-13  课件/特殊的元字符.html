@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+       验证手机号：11位
+                  都是数字
+                  以数字1开头
+                  第二位数是3-9之间
+                  +9位数
+
+        验证QQ号: 不能以0开头
+                  不能为字母
+                  最少5位，最多11位
+
+        \d  0~9之间的数字
+        \D   非零数字
+        \n   回车
+        \s   一个空格
+        \S  一个非空格
+        \b  一个边界符
+        \B  一个非边界符
+        \m  一个数字、字母、下划线
+        \W   一个非数字、字母、下划线
+                
+      */
+      let {log:l,dir:r} =console;
+
+      // 验证手机号
+      let str = '18703569762'//整段字符都要匹配这个规则
+      l(/^1[3-9]\d{9}$/.test(str));//ture
+
+      // 验证QQ号
+      let str2 = '1762620172'
+      l(/^[^0]\d{4,10}$/.test(str2));//ture
+
+      // 去掉前后空格
+      let str3 = '  l q m j  '
+      l(str3.trim())// 'l q m j' 字符串trim的方法
+      l(str3.replace(/^\s+|\s+$/g,'')) //正则匹配replace替换
+
+        let srr = ''
+        let stt = ''
+          for(let i=0;i<str3.length;i++){
+            if(str3[i] !== ' '){
+              srr = str3.substring(i);
+                break;
+            }
+        }
+        l(srr)
+        for(let i=srr.length-1;i>0;i--){
+            if(srr[i] !== ' '){
+              stt = srr.substring(0,i+1);// 0是l  i+1是j
+              break;
+            }
+        }
+        
+        l(stt) // 原生for循环字符串截取
+
+
+      // 将非空格替换成*
+      let str4 = '77lqmj'
+      l(str4.replace(/\S/g,'*'))//'******'
+
+
+    
+    
+    
+    </script>
+</body>
+</html>
