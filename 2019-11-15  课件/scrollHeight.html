@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #txt{
+        width: 100px;
+        height: 50px;
+        border: 1px solid #000;
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- <textarea id="txt"></textarea> -->
+    <div id="txt">lqmjlqmjlqmjqlqmjlqmj
+        qlqjjnqlnqjnjnnsdnsjnfdsnvfsdjn
+        jnsdvhfskjbsbdfhbsbfuyaegbewfbj
+        agfgsbfjhaefhjbsadnfjaewfygbbhj
+        safygyfhbsahbfbhabsfbabfjadewgyu</div>
+    <script>
+    /* 
+      scrollWidth/scrollHeight被内容撑开的宽度和高度,不算边框的
+    
+     */
+    let {log:l}=console;
+    l(txt.scrollHeight)//104 
+    l(txt.scrollWidth)//278
+    </script>
+</body>
+</html>
