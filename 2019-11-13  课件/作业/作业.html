@@ -16,7 +16,8 @@
     }  
     let str = '我的名字叫{name},年龄是{age}岁,我想说:{say}';
     let {log:l} = console;
-    let cc= str.replace(/({[a-z]+})/g,($0,$1)=>obj[$1.match(/[a-z]+/g).join()]);
+    l(obj[['name']]) // => obj['name']
+    let cc= str.replace(/({[a-z]+})/g,($1)=>obj[$1.match(/[a-z]+/g)]);
     l(cc)
    
   
@@ -29,8 +30,7 @@
     
     let str2 = 'hd82nxa89a3axdma2naejaaxaa8n2xdanja2cah2hnadhioamwajexnad8mdahiodn';
    
-    
-    let kk = str2.split('').sort().join('').match(/(\w)\1*/g).sort((a,b)=>b.length-a.length);
+    let kk = str2.split('').sort().join('').match(/(\w)\1+/g).sort((a,b)=>b.length-a.length);
     l('str2出现次数最多的是'+kk[0][0]+'出现了'+kk[0].length+'次')
     
 
