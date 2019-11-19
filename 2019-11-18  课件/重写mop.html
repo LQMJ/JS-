@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+       map(function(item,index,all){},that) -> 新数组，长度和旧数组一样
+
+     */
+
+    let ary = [1,2,3,4,5,6,7]
+
+    Array.prototype.myMop = function(callback,that){
+      let ary1 = [];
+      for(let i = 0 ; i<this.length;i++){
+          ary1.push(callback.call(that,this[i],i,this))
+      }
+      return ary1
+    }
+    
+    // 调用
+    let z = ary.myMop(function(item,index,all){
+        console.log(this)
+        return item;
+    },document)
+    console.log(z)
+    </script>
+</body>
+</html>

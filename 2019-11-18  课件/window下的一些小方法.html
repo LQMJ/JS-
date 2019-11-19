@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div{
+        padding: 100px;
+    }
+    #box2{
+        background: red;
+        position: relative;
+    }
+    #box3{
+        position:absolute;
+        background:yellow;
+    }
+    
+    
+    </style>
+</head>
+<body style="height:2000px">
+    <div>
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <script>
+    /* 
+    DOM:获取可视宽度的高/宽
+        document.documentElement.clientHeight
+        document.documentElement.clientwidth  如果有滚动条，会减去滚动条的宽度
+
+        element.getBoundingClientRect() 它返回的是一个对象，这个对象下放的是元素的绝对位置。
+
+        document.documenElement.scrollTop
+
+
+    BOM:
+        window.innerHeight/window.innerWidth,如果有滚动条，不会减去滚动条的高度
+
+        window.pageXOffset/window.pageYOffset  滚动条的距离
+    
+     */
+     let {log,dir} = console;
+
+     log(document.documentElement.clientWidth)
+     log(innerWidth)
+     dir(box3.getBoundingClientRect())
+
+     window.onscroll = function(){
+         console.log(window.pageYOffset)
+     }
+
+    
+    </script>
+</body>
+</html>

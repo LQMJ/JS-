@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        margin:100px auto;
+        width:1280px;
+        height:5px;
+        border:1px solid hotpink;
+    }
+    #box2{
+        height:5px;
+        width:0%;
+        background:rebeccapurple;
+        transition: .2s;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id = 'box'>
+        <div id = 'box2'></div>
+    </div>
+    <script>
+        let ary = [
+            'http://img4.imgtn.bdimg.com/it/u=3087232940,2136816654&fm=26&gp=0.jpg',
+            'http://img1.imgtn.bdimg.com/it/u=2422436610,701962099&fm=26&gp=0.jpg',
+            'http://img4.imgtn.bdimg.com/it/u=1541686830,2939991134&fm=26&gp=0.jpg',
+             'http://img1.imgtn.bdimg.com/it/u=406788379,3592879392&fm=26&gp=0.jpg'                    
+    ]
+    let num = 0;
+    ary.forEach(img=>{
+        let pic = document.createElement('img')
+        pic.src = img;
+        pic.onload = function(){
+            box2.style.width  = 25 * (++num) + "%";
+            if(25*num === 100){
+                body.style.transtion = '1s';
+                back.style.background = 'hotpink';
+            }
+        }
+        pic.onerror = function(){
+            pic.onload();
+        }
+    });
+    </script>  
+</body>
+</html>

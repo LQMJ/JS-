@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        const img = document.createElement('img');
+        img.src = '图片/1x.jpg'
+        img.onload = function(){
+            console.log('成功')
+        }
+        img.onerror = function(){
+            console.log('失败');
+            this.src = 'http://img5.imgtn.bdimg.com/it/u=3455775530,3901721317&fm=26&gp=0.jpg';
+        }
+        box.append(img);
+        
+        
+    </script>
+</body>
+</html>
