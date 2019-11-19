@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+           exec的小秘密
+                如果是一个变量的正则，每次不断的去用正则调用exec返回的结果 
+                总是下次匹配的结果，如果下次匹配不到，返回null 
+
+            let str = 'acbacacbacbac'
+            let re = /(ac)/gi
+
+            ac  -> 0(索引)
+            ac  -> 3(索引)
+            ac  -> 5(索引)
+            ac  -> 8(索引)
+            ac  -> 11(索引)
+            null
+            
+            
+                
+            lastIndex是可以拿到当前匹配项之后第一个字符的位置
+        
+        */
+
+        // let str = 'acbacacbacbac'
+        // let re = /(ac)/gi
+        // let {log} = console;
+
+        // log(re.exec(str))
+        // log(re.exec(str))
+        // log(re.exec(str))
+        // log(re.exec(str))
+        // log(re.exec(str))
+        // log(re.exec(str))
+        
+     /* 
+       re:匹配的正则
+       str:整个字符串
+       cb：回调函数
+
+       返回的是一堆新的字符串
+
+       解决的是replace，第一个参数是正则，第二个参数是函数
+     
+     */   
+        
+        let str = 'abcabcabcabcabc'
+
+        function replace(str,re,cb){
+            let str2 = ''; // 最后改变的结果
+            let ary = re.exec(str) // true;//让第一次能够进去whild中（找到第一次的位置）
+            let reAry = []; // 每次返回要修改字符的数组
+            let noRep = [];// 不替换的
+            let num = 0;
+            while(ary){
+                let {index} = ary; // 解构出匹配到的索引index
+                reAry.push(cb(...ary,index,str));
+                noRep.push(str.substring(num,re.lastIndex-ary[0].length))
+                num = re.lastIndex;
+                ary = re.exec(str)
+            }
+            // 没修改的 + 修改的 = 最新的字符串
+            noRep.forEach((old,i)=>{
+                str2 += (old + reAry[i])
+            })
+            return str2;
+        }
+        // let i = 0;
+        let s = replace(str,/abc/g,function($0,$1,$2,$3,$4,$5){
+            return 'ade' 
+        })
+        console.log(s)
+        
+    
+    </script>
+</body>
+</html>

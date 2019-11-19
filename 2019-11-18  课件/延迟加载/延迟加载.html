@@ -17,6 +17,7 @@
         width: 200px;
         height:300px;
         margin-bottom:10px ;
+        margin-left: 10px;
         padding: 10px;
         background: pink;
         float: left;
@@ -47,14 +48,23 @@
     function fn(){
         let li = document.createElement('li');
         let img = document.createElement('img');
-        ul.append(li)
-        li.append(img)
+        ul.appendChild(li)
+        li.appendChild(img)
     }
     ary.forEach(item => fn())
     let li = document.querySelectorAll('li')// 获取li
-    documen.onload = function(){
-        let 
+
+    function fn2(){
+    //    let num = 100;
+       for(let i = 0;i<li.length;i++){
+        li[i].children[0].src = ary[i]
+        // if(document.documentElement.scrollTop + innerHeight > li[i].getBoundingClientRect().top){
+          
+        //   }
+       } 
     }
+    fn2()
+    document.onscroll = fn2
 
     
     </script>
