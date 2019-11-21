@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        // let lis = document.querySelectorAll('li')//静态获取
+        // for(var i=0;i<lis.length;i++){
+        //     ul.append(lis[i]) // 1 2 3 4
+        // }
+
+        let lis = document.getElementsByTagName('li')
+        for(var i=0;i<lis.length;i++){ //数组塌陷
+            ul.append(lis[i]) // 2 4 3 1 都是剪切，不是复制
+        }
+        // 2341 2413 2431
+        
+    </script>
+</body>
+</html>

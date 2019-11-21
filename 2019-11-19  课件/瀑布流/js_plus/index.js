@@ -34,7 +34,7 @@ function throtttling(cb,time){
     return function(...arg){
      let nowTime = +new Date;
      if(nowTime - prevtime > time){
-         cb.call(this,...ary);
+         cb.call(this,...arg);
      }else{
          clearInterval(timer)
          timer = setTimeout(()=>{
@@ -101,6 +101,7 @@ render()
 //滚轮的时候判断触底
 let iH = window.innerHeight;//可视区的高度
 window.onscroll = debounce(fn,200);
+window.onscroll = throtttling(fn,200)
 function fn(){
     let {index} = minIndex(aryy);//最短的距离
     let scroll = window.pageYOffset;//滚动条的距离
@@ -119,7 +120,8 @@ function fn(){
 window.onresize = function(){
     console.log(1)
     clientW = document.documentElement.clientWidth;// 可视区的宽度
-     len = Math.floor(clientW / (picw + ml)) - ml + 'px';
+     len = Math.floor(clientW / (picw + ml));// 页面可以放多少图片
+     box.style.width = (len*(picw+ml)) - ml + 'px'; // ul的宽度
      aryx.length = 0;
      aryy.length  = 0;
      iH = window.innerHeight;
@@ -127,10 +129,11 @@ window.onresize = function(){
          aryx[i] = i*(picw + ml);
          aryy[i] = 0;
      }
+     //获取所有的li，然后给重新安排位置
      const lis = box.querySelectorAll('li');
      lis.forEach((item,i)=>{
          let {index} = minIndex(aryy);
          item.style.cssText = `top:${aryy[index]}px;left:${aryx[index]}px`;
-         aryy[index] += (item.scrollHeight +10);
+         aryy[index] += (item.scrollHeight + 10);
      })
 }

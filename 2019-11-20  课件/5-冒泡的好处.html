@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 500px;
+        height:500px;
+    }
+    
+    
+    </style>
+</head>
+<body>
+   <div id="box">
+    <button id="btn">点击创建</button>
+    <ul id="ul">
+        <li>1</li>
+    </ul> 
+   </div>
+    <script>
+        /* 
+           动态获取：document.getElement系列  element.children()
+           静态获取：querySelector / querySelectorAll
+
+        */
+       let lis = document.getElementsByTagName('li')//动态获取
+       // let lis = document.querySelectorAll('li')//静态获取
+       let num = 1;
+       btn.onclick = function(){
+           ul.innerHTML += '<li>'+(++num)+'</li>'
+        //    console.log(lis.length)
+           for(var i = 0;i<lis.length;i++){
+             lis[i].onclick = function(){
+                 console.log(this.innerHTML)
+             }
+           }
+       }
+
+       box.onclick = function(ev){
+        console.dir(ev) // 事件源
+        console.log(ev.target); // 获取你点击的目标元素
+        console.log(ev.target.tagName);//获取到的点击的目标元素的标签名是大写的
+        if(ev.target.tagName === 'UL'){ //获取的目标元素等于谁的样式就改变
+             ev.target.style.background = 'red';
+           }
+       }
+    </script>
+</body>
+</html>

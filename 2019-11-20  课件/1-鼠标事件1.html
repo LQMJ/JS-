@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+       <select name="" id="sele">
+           <option>北京</option>
+           <option>上海</option>
+           <option>天津</option>
+           <option>重庆</option>
+       </select>
+       <input type="text" maxlength="10" id="txt" value="明天，你好！"><span id="span">0</span>/10
+       <input type="file" id="f">
+    </div>
+    <script>
+        /* 
+          onchange: 表单元素value被改变，失去焦点触发 || select的value被改变触发
+
+          onblur: 表单元素失去焦点触发
+
+          onfocus:表单元素聚焦触发
+        
+        
+        */
+        let {log} = console;
+        const box = document.getElementById('box')
+        log(box)
+
+        sele.onchange = function(){ // select的value被改变触发
+            log(1)
+        }
+        // txt.onchange = function(){ // value被改变后失去焦点触发
+        //     log(2)
+        // }
+        // f.onchange = function(){
+        //     log(3)
+        // }
+        // txt.oninput = function(){// 当输入内容的时候触发
+        //     log(1)
+        //     span.innerText = this.value.length
+        // }
+        // txt.onblur = function(){ //表单元素失去焦点
+        //     log(2)
+        // }
+        // txt.onfocus = function(){//表单元素聚焦事件
+        //     log(3)
+        // }
+    </script>
+</body>
+</html>
