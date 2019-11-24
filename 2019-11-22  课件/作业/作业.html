@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #body{
+        margin: 0 auto;
+        width:1500px;
+        height:680px;
+        background: url(./img/timg.jpg) no-repeat;
+        background-size: cover;
+    }
+    
+     #box{
+         width: 100px;
+         height: 100px;
+         background:url(./img/小飞机.png);
+         position: absolute;
+         top: 0;
+         left: 0;
+     }
+    .box2{
+    width:5px;
+    height:5px;
+    background:rgb(255, 81, 0);
+    border-radius: 50%;
+    position: absolute;
+    top:0px;
+    left:40px;
+    transition: 1s;
+}
+    
+    </style>
+</head>
+<body id="body">
+            <div id="box"></div>
+            <div id="box2"></div>
+    <script>
+    let timer;
+    let e = 0;
+    let obj = {};
+
+    document.onkeydown = function(ev){
+       e = ev.keyCode;
+       obj[e] = true;
+       if(!timer){
+           timer = setInterval(fn,16.7)
+       } 
+    }
+    let fn = () =>{
+      if(obj['87']){
+          box.style.top = Math.max(0,box.offsetTop -5) +'px';
+      }
+      if(obj['83']){
+          box.style.top = Math.min(600,box.offsetTop +5) +'px';
+      }
+      if(obj['65']){
+          box.style.left = Math.max(0,box.offsetLeft - 5)+'px'; 
+      }
+      if(obj['68']){
+          box.style.left =Math.min(1420,box.offsetLeft +5) +'px';
+      }
+      if(obj['13']){
+        let div = document.createElement('div')
+        div.className = 'box2';
+        box.append(div);
+           setInterval(()=>{
+            div.style.top = -1000 +'px'
+        })
+      }
+    }
+    timer = setInterval(fn,16.7);
+
+    document.onkeyup = function(ev){
+        obj[ev.keyCode] = false;
+        if(Object.values(obj).every(item=>!item)){
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+    </script>
+</body>
+</html>

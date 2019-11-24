@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+     *{
+         margin: 0;
+         padding: 0;
+     }
+     div{
+         float: left;
+     }
+     #box{
+         width: 350px;
+         height: 350px;
+         border: 1px solid black;
+         position: relative;
+     }
+     #box2{
+         position: absolute;
+         width: 100px;
+         height: 100px;
+         background: rgba(255,125,175,.5);
+         top: 0;
+         left: 0;
+         display: none;
+         cursor: move;
+     }
+     #box3{
+         width: 500px;
+         height: 500px;
+         border: 1px solid black;
+         position: relative;
+         overflow: hidden;
+         display: none;
+     }
+     #img2{
+         position: absolute;
+         top: 0;
+         left:0;
+     }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="1.jpg" alt="">
+        <div id="box2"></div>
+    </div>
+    <div id="box3">
+        <img src="2.jpg" alt="" id="img2">
+    </div>
+    <script>
+        /* 
+          onmouseover 鼠标移入
+          onmouseout  鼠标移出
+          onmousemove  鼠标滑动
+        
+         */
+        box.onmouseover = function(){
+            box3.style.display = box2.style.display = 'block';
+        }
+        box.onmouseout = function(){
+            box3.style.display = box2.style.display = 'none';
+        }
+    
+    let boxw = box.clientWidth; // 获取box的宽
+    let boxh = box.clientHeight;//  获取box的高
+    box.onmousemove = function(ev){
+        //  console.dir(ev.clientX)// 鼠标光标X轴离左边元素的距离
+        // console.log(ev.clientY)
+        let l = ev.clientX - box2.clientWidth/2;// box2盒子左边框离box盒子的左边框的X轴距离
+        let t = ev.clientY - box2.clientHeight/2; //box2盒子左边框离box盒子的左边框的X轴距离
+        // 限制范围
+        if(l < 0){ // 最小是0
+            l = 0;
+        }else if(l > boxw - box2.clientWidth){//最大就是box盒子的clientWidth - box2盒子的的offsetWidth
+            l = boxw - box2.clientWidth;
+        }
+        if(t < 0){ // 最小是0
+            t = 0;
+        }else if(t > boxh - box2.clientHeight){//最大就是box盒子的clientHeight - box2盒子的的offsetHidth
+            t = boxh - box2.clientHeight;
+        }
+
+        // 0 - 1 之间的比例
+        let scalex = (ev.pageX - box2.clientWidth/2)/(boxw - box2.clientWidth)
+        let scaley = (ev.pageY - box2.clientHeight/2)/(boxh - box2.clientHeight)
+
+         // 通过比例去计算img2的位置
+        img2.style.left = scalex * (box3.clientWidth - img2.offsetWidth) + 'px';
+        img2.style.top = scaley * (box3.clientHeight - img2.offsetHeight) + 'px';
+
+        box2.style.top = t + 'px';
+        box2.style.left = l + 'px';
+    }
+
+   
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+     #box{
+         width: 100px;
+         height: 100px;
+     }
+
+    
+    </style>
+</head>
+<body>
+     <div id='box' style='background:red'></div>
+     <button>红</button>
+     <button>绿</button>
+     <button>蓝</button>
+    <script>
+    //  let btns = document.querySelectorAll('button')
+    //  let ary = ['red','green','blue']
+    //  for(let i=0;i<btns.length;i++){
+    //      btns[i].onclick =function(){
+    //          box.style.background = ary[i];
+    //      }
+    //  } //  box.setattibute()
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////
+// 数组扁平化
+    let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9,[11, 12, [12, 13, [14]]]], 10];
+   /*
+     方法一
+     function flatent(ary){
+        let a= ary.join(',').split(',')
+        return a.map((item)=>Number(item))
+    }
+    let x=flatent(arr)
+    console.log(x)
+    
+     */
+
+
+  /*
+    方法二：
+     let ary2 = [];
+    function flatent(ary){
+          ary.forEach((item)=>{
+              if(Array.isArray(item)){
+                  flatent(item)
+              }else{
+                  ary2.push(item)
+              }
+          })
+          return ary2;
+    }
+    flatent(arr)
+    console.log(ary2)
+    
+     */
+
+// 重写new
+            // function Dog(name) {
+            //     this.name = name;
+            // }
+            // Dog.prototype={
+            //     bark(){
+            //         console.log('wangwang');
+            //     },
+            //     sayName(){
+            //         console.log('my name is ' + this.name);
+            //     }
+            // };
+            // function _new() {
+            //    let obj = {};   创建一个空对象
+            //    obj.__proto__  =  arguments[0].prototype;  实例的原型链 ===构造函数的原型 
+            //    let re = arguments[0].call(obj,[...arguments].slice(1));  改变this指向，指向实例
+            //    if(typeof re === 'object'||typeof re ==='function'&& re!== null){//如果函数返回的是引用类型或者是函数并且不是null(因为null的typeof检测出来也是object)，返回值就是引用类型，否则默认返回实例
+            //        return re;
+            //    }else{
+            //        return obj;
+            //    }
+
+            // }
+            // let sanmao = _new(Dog, '三毛');
+            // sanmao.bark(); //=>"wangwang"
+            // sanmao.sayName(); //=>"my name is 三毛"
+            // console.log(sanmao instanceof Dog); //=>true
+
+// 
+
+// 重写call
+
+// Function.prototype.Mycall = function(that,...arg){
+//       if(that === null || that === undefined){
+//           that = window;
+//       }else{
+//           switch(typeof that){
+//               case 'string':
+//               that = new String(that);
+//               break;
+//               case 'boolean':
+//               that = new Boolean(that);
+//               break;
+//               case 'number':
+//               that = new Number(that);
+//               break;
+//           }
+//       }
+//       that.fn = this;
+//       that.fn(...arg);
+//       console.log(that)
+// }
+
+// function fn(a,b,c){
+//     delete this.fn //  删除函数
+//     console.log(this,a,b,c)
+// }
+// fn.call([],11,22,33)
+
+////////////////////////////////////////////////
+// 原型继承
+
+// var obj = {a:12,b:23};
+// var o = Object.create(obj);
+//     // 结果是 o是个空对象， o的__proto__ 是 obj
+//     console.log(o)
+//  function create(pro){
+//      let b =function(){}
+//      b.prototype = pro
+//      return new b     
+//  }
+
+// 防抖
+// function debounce(cb,time){
+//          let timer;
+//          return function(...arg){
+//              //当事件触发的时候就先关闭上池的timer
+//             if(timer){
+//                 clertTimeout(timer);
+//             }
+//             timer = serTimeout(()=>{
+//                 cb.call(this,...arg)
+//             },time)
+//          }
+//      }
+
+//  求交集
+// nums1 = [1, 2, 7]
+// nums2 = [2, 2, 3]
+// // 返回 [2, 2]
+// function fn(nums1,nums2){
+//     let a = [...nums1];
+//     let b = [...nums2];
+//     let c = [];
+//     a.forEach((item)=>{
+//         for(let i = 0;i<b.length;i++){
+//             if(item === b[i]){
+//                 c.push(item)
+//                 b.splice(i,1)
+//                 break;
+//             }
+//         }
+//     })
+//     return c;
+// }
+// console.log(fn(nums1,nums2))
+
+
+// 正则替换
+// let template = '我是{{name}}，年龄{{age}}，性别{{sex}}';
+// let data = {
+//   name: '小明',
+//   age: 18,
+//   sex:'男'
+// }
+ 
+// console.log(render(template, data))// 我是姓名，年龄18，性别男
+
+// // 实现render方法
+// function render(tmp,data){
+//     let cc = tmp.replace(/({{[a-z]+}})/g,($1)=>data[$1.match(/[a-z]+/g)]);
+//     console.log(tmp.match(/({{[a-z]+}})/g))
+//     return cc;
+// }
+
+// 获取一个字符串中出现次数最多的字符 及其 出现的次数
+// function getMax(str){
+//    let kk = str.split('').sort().join('').match(/(\w)\1+/g).sort((a,b)=>b.length-a.length);
+//    let cc = kk[0][0];
+//    console.log(cc)
+//    let bb = kk[0].length;
+//    return cc,bb;
+// }
+// var str = 'werwersdfwerwgfgsrtertwertdg';
+// // console.log(str.split('').sort().join('').match(/(\w)\1+/g).sort((a,b)=>b.length-a.length))
+// console.log(getMax(str))// {key:'r', num:6}
+
+/*
+ * 编写queryURLParams方法实现如下的效果
+ */
+ let url="http://www.zhufengpeixun.cn/?lx=1&from=wx#video";
+
+//  let {log} = console;
+//  log(url.split('?')[1].replace('#','&hash=').split('&'))
+//  console.log(url.queryURLParams("from")); //=>"wx"
+// console.log(url.queryURLParams("hash")); //=>"video"
+
+
+String.prototype.queryURLParams = function(str){
+     let ary = url.split('?')[1].replace('#','&hash=').split('&')
+     let obj = {};
+     ary.forEach((item)=>{
+         let ary2 = item.split('=');
+         obj[ary2[0]]= ary2[1]
+     })
+     if(str!==undefined){
+         return obj[str]
+     }
+     return obj;     
+}
+
+console.log(url.queryURLParams()); //=>{lx:'1',from:'wx',hash:'video'}
+// function queryURLParams(url){
+//     let result = {};
+//   reg1 = /([^?=&#]+)=([^?=&#]+)/g
+//   reg2 = /#([^?=&#]+)/g
+//   url.replace(reg1,(n,x,y)=>result[x]=y);
+//   url.replace(reg2,(n,x)=>result['hash']=x);
+//   return result;
+// }
+    </script>
+</body>
+</html>

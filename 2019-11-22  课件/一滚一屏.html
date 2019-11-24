@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+     *{
+         margin: 0;
+         padding: 0;
+     } 
+     html,body{
+         overflow: hidden;
+     }
+     #ul{
+         position: absolute;
+         list-style: none;
+         top: 0;
+         left: 0;
+         transition: 1s;
+     }
+
+    </style>
+</head>
+<body>
+    <ul id="ul"></ul>
+    <script>
+        let ary = ['https://i01piccdn.sogoucdn.com/eee5614f767a29fb',
+                   'https://i02piccdn.sogoucdn.com/78f29f7640ce8b9f',
+                   'https://i02piccdn.sogoucdn.com/44acfea59131f2a3',
+                   'https://i04piccdn.sogoucdn.com/919f8b449f16be64',
+                   'https://i04piccdn.sogoucdn.com/c6d02b92c4363f5d',
+                   'https://i04piccdn.sogoucdn.com/0895132f5e3a176d',
+                   ];
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        let html = ary.map(item=>`<li style = "width:${w}px;height:${h}px;background:url(${item})no-repeat; background-size:100% 100%"></li>`).join('');
+        ul.innerHTML = html;
+        let num = 0;
+        addWheel(document,debounce(fn,500));
+
+        function fn(o){
+            if(o){
+                num --;
+                if(num < 0){
+                    num = 0;
+                }
+            }else{
+                num ++;
+                if(num > ary.length-1){
+                    num = ary.length-1;
+                }
+            }
+            ul.style.top = -num*h+'px';
+        }
+        function addWheel(obj,cb){
+            if(obj.onmousewheel === null){//说明有这个事件
+                obj.onmousewheel = listen;
+            }else{
+                obj.addEvenListener('DOMMouseScroll',listen);
+            }
+            function listen(ev){
+                let o = false; //默认是向下，true向上
+                // 使上下方向统一
+                if(ev.wheelDelta){
+                    o = ev.wheelDelta > 0?true:false;
+                }else{
+                    o = ev.detail < 0 ? true:false;
+                }
+                cb.call(this,o);
+            }
+        }
+
+        // 防抖
+        function debounce(cb,time){
+            let timer;
+            return function(...arg){
+                // 当事件触发的时候就先关闭上次的timer
+                if(timer){
+                    clearInterval(timer);
+                }
+                timer = setTimeout(()=>{
+                    cb.call(this,...arg);
+                },time)
+            }
+        }
+
+
+        //节流
+        function throttling(cb,time){
+            let prevtime = 0;
+            return function(...arg){
+                let nowTime  = +new Date;
+                if(nowTime - prevtime >time){
+                    cb.call(this,...arg);
+                }
+                prevtime = nowTime;
+            }
+        }
+    </script>
+</body>
+</html>

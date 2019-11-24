@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // var name = "WINDOW";
+            // function fn(){
+            //     console.log(this.name); //WINDOW  OBJ   OBJ WINDOW  
+            // }
+            // var obj = {
+            //     name:"OBJ",
+            //     fn:()=>{
+            //         console.log(this.name); // WINDOW  WINDOW 
+            //     }
+            // };
+            // fn(); 
+            // obj.fn();
+            // fn.call(obj);
+            // window.onload=function(){
+            //     //页面加载完成，事件就会触发
+            //     fn();
+            //     obj.fn();
+            // };
+            // fn.bind(obj)();
+
+            //  var print=function(){alert(1);}
+            // function Fn() {
+            //     print=function(){alert(2);}
+            //     return this;
+            // }
+            // function print(){alert(3);}
+            // Fn.prototype.print=function(){alert(4);}
+            // Fn.print=function(){alert(5);}
+
+            // print();
+            // Fn.print();
+            // Fn().print();
+            // new Fn.print();
+            // new Fn().print();
+
+
+            // function Fn(n,m) {
+            //     n=n||0;
+            //     m=m||0;
+            //     this.x = n;
+            //     this.y = m;
+            //     this.getX = function () {
+            //         console.log(this.x);
+            //     }
+            //     return n+m;
+            // }
+            // Fn.prototype.sum=function(){
+            //     console.log(this.x+this.y);
+            // }
+            // Fn.prototype={    原型重新赋址
+            //     getX:function(){
+            //         this.x+=1;
+            //         console.log(this.x);
+            //     },
+            //     getY:function(){
+            //         this.y-=1;
+            //         console.log(this.y);
+            //     }
+            // };
+            // let f1 = new Fn(10,20);
+            // let f2 = new Fn;
+            // console.log(f1.getX === f2.getX);
+            // console.log(f1.getY === f2.getY);
+            // console.log(f1.__proto__.getY === Fn.prototype.getY);
+            // console.log(Fn.prototype.getX === f2.getX);
+            // console.log(f1.constructor);
+            // f1.getX();
+            // Fn.prototype.getX();
+            // f2.getY();
+            // Fn.prototype.getY();
+            // f1.sum();  // 报错
+                
+    </script>
+</body>
+</html>

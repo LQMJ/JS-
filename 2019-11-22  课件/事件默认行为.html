@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+     *{
+         margin: 0;
+         padding:0;
+         list-style: none;
+     }
+     #ul{
+         width: 100px;
+         border: 1px solid hotpink;
+         display: none;
+         position: absolute;
+         top: 0;
+         left: 0;
+     }
+     #ul li{
+         height: 20px;
+         line-height: 20px;
+         text-align: center; /* 文本居中 */
+         border-bottom: 1px dashed plum;
+     }
+     #ul li:hover{
+         background: hotpink;
+         color: white;
+     }
+    </style>
+</head>
+<body style="height:3000px">
+    <!-- <input type="text" id="txt">
+    <img id="img" src="" alt=""> -->
+    <a href="http://baidu.com" id="aa">去百度</a>
+    <ul id="ul">
+        <li>我的帖子</li>
+        <li>用户管理</li>
+        <li>我的关注</li>
+        <li>用户反馈</li>
+    </ul>
+    <script>
+       /* 
+         浏览器默认行为：
+             某些行为并不是人为做的，而且浏览器悄悄做的
+        
+        DOM0的方式
+
+        要阻止默认行为要知道是什么事件触发的这种行为
+        （1）ev.returnValue = false;  去阻止默认行为（灵活）
+        （2）return false
+
+        DOM2解除默认事件的方式
+
+        ev. preventDefault();(事件默认的绑定的时候使用或者returnValue)
+
+        oncontextmenu  鼠标右键
+       
+       */ 
+    /*   
+        空格的键码32  
+        空格的默认事件是滚动条下下滑
+        ev.returnValue = false;  去阻止默认行为（灵活）
+
+        需求阻止空格的默认事件
+      
+       document.onkeydown = function(ev){
+           if(ev.keyCode === 32){ // 空格键
+            ev.returnValue = false
+           }
+       } 
+       
+       */
+
+   /* 
+     DOM2解除默认事件  ev.preventDefault()
+    
+     let yan = true;
+     aa.addEventListener('click',function(ev){
+           
+            ev.preventDefault()
+            
+     }) */
+    </script>
+</body>
+</html>

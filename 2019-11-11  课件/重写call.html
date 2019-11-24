@@ -40,12 +40,12 @@
             }
         }
         that.fn = this; // 改变this指向
-        // that.fn(...arg); // 调用函数
-        delete that.fn;  // 删除函数
+        that.fn(...arg); // 调用函数
         console.log(that)
     }
     
     function fn(a,b,c){
+        delete this.fn //  删除函数
         console.log(a,b,c)
     }
     fn.Mycall('23',12,13,14) // String {"23"}
