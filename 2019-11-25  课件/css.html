@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background: hotpink;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">隐藏</button>
+    <button id="btn2">显示</button>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#btn').click(function(){
+               
+            $('#box').hide() //dispaly = none
+        })
+        $('#btn2').click(function(){
+            $('#box').show()
+        })
+   
+    // $('#box').show()
+    </script>
+</body>
+</html>

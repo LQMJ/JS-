@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">创建</button>
+    <ul id="ul"></ul>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+     /* 
+     
+     DOM  -> 文档对象模型
+     增删改查
+     document.createElement(元素)  创建元素
+     removeChild(元素)  删除元素
+     replaceChild(新元素，旧元素)  替换元素
+     insertBefore(新元素，旧元素)  插入
+     appendChild(子元素)   插入到元素末尾
+
+     添加元素：$('<li></li>')
+
+     关系：父子、祖先关系、子孙关系
+
+     回流和重绘
+
+     盒子模型
+
+     事件中的this，默认是原生对象
+
+     jquery元素都可以链式调用
+
+
+     parent.prepend(child) 等同于insertBefore
+     
+     */
+
+    let num = 0;
+    $('#btn').click(function(){
+        /* 
+           创建一个li，li里有内容和样式，然后把它插入ul中
+        */
+       let $li = $('<li>'+ ++num +'</li>').css({
+           width:70,
+           height:70,
+           background:'red'
+       })
+         $li.click(function(){
+             $(this).remove();
+         })
+         $('#ul').prepend($li)
+    })
+   
+     //边框一个是给ul添加，一个是给li添加
+        // $('#ul').append($li).css('border','1px solid #000');
+
+        // $li.appendTo($('#ul')).css('border','1px solid #000');
+    
+    </script>
+</body>
+</html>
