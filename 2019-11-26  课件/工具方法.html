@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul"></ul>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+     /* 
+       $.
+
+       $.each  jquery对象循环
+
+       $.ajax()  请求数据
+
+       fetch('url').then(d=>d,json()).then(data => data)
+
+      */
+    //   let ary = [1,2,3,4,5,6,7];
+    //   $.each(ary,function(i,ele){ // 索引，每一项
+    //       console.log(i,ele)
+    //   })
+
+    /*  
+        // 原生请求数据的方式
+        fetch('https://www.baidu.com/s?id=12345&user=lilei&pass=123').then(d=>d.json()).then(d=>{d})
+
+        
+        // jquery对象下的ajax请求数据的方法
+        $.ajax({
+            method:'post',
+            url:'https://www.baidu.com/s',
+            data:{
+                id:12345,
+                user:'lilei',
+                pass:123
+            },
+            success:function(data){
+
+            }
+        }); */
+
+     $.ajax({
+         url:'https://www.baidu.com/sugrec?',
+         data:{
+             prod:'pc',
+             sugsid:'1462,21099,18560,29567,29700,29220,26350',
+             wd:'航天'
+         },
+         dataType:'jsonp',
+         success:function(d){
+            console.log(d)
+            d.g.forEach(item=>{
+                let $li = $('<li>'+item.q+'</li>')
+                $('#ul').append($li);
+            })
+         }
+     })
+    
+    
+    </script>
+</body>
+</html>

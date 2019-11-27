@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      #box{
+          width: 100px;
+          height: 100px;
+          background:red;
+      }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <button>按钮</button>
+            <ul id="ul">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+    </div>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+        /* 
+           click     点击
+           mouseover  滑入
+           mouseout   滑出
+           ......
+
+           事件的三大部分：
+           1.事件流
+           2.有哪些事件，他们是干嘛的
+           3.事件对象
+
+           hover: 没有冒泡，没有穿透
+           onmouseenter
+           onmousleave
+
+           delegate  事件监听
+
+          父级元素监听子元素的事件函数
+          $('#box').delegate('li','click',  function(){
+              console.log($(this).text());
+          })
+
+          解绑事件：off()
+
+           JQ中的所有事件都是on来二次封装的，JQ中的事件全部都是事件绑定
+
+           JQ的事件对象都是二次封装的，如果要拿到真正的的原生js事件对象
+               ev.originalEvent(原生事件对象)
+
+           JQ中阻止冒泡和默认行为，直接return false即可
+
+         */
+        //  $('#box').hover(function(){
+        //      $(this).css({
+        //          background:'yellow'
+        //      })
+        //  },function(){
+        //      $(this).css({
+        //          background:'skyblue'
+        //      })
+        //  })
+
+        // 事件监听  父级元素监听子元素的事件函数
+        // $('#box').delegate('li','click',function(){
+        //     console.log($(this).text());
+        // })
+/* 
+
+        $('#box').mouseover(function(){
+             $(this).css({ background:'skyblue'})
+             $('button').click(function(){
+                 console.log('发起了一次请求')
+             })
+        });
+        $('#box').mouseout(function(){
+            $(this).css({
+                background:'red'
+            })
+        })
+        
+        问题：触发一次hover就绑定一次click，触发的越多，绑定的就越多，当触发一次click就会执行多次的click事件
+
+        解决：绑一次解绑一次，始终保持一致click
+
+         $('#box').hover(function(){
+          $(this).css({background:'skyblue'});
+        //解绑上一次，再添加一次新的click
+        $('button').off().click(function(){
+            console.log('发起一次请求')
+        })
+        },function(){
+          $(this).css({background:'red'})
+       })
+     */
+     
+        let  ary = ['小明','小黑','小强']
+        ary.forEach((item,i)=>{
+            let $li = $('<li>'+(i+1)+'</li>');
+            $li.on('click',{d:item},function(ev){
+                console.log(ev);
+                console.log('我的名字叫'+ev.data.d);//存值
+            })
+            $('ul').append($li)
+        })
+    </script>
+</body>
+</html>

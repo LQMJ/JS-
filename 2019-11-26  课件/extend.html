@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+      /* 
+         深浅拷贝、扩展方法
+         $.entend  工具方法  -> $.xx()
+         $.fn.extent  功能方法  -> $().xx()
+      
+      */
+
+    //  深浅拷贝
+      let obj = {
+        name:'小明'
+       }
+
+    let obj2 = $.extend({},obj);  // 浅克隆
+
+    // console.log(obj2 == obj);
+
+
+    // let ary = [1,2,[3,4]];
+
+    let ary2 = $.extend(true,[],ary);   // true就代表深度克隆
+
+    // ary2[2].push(5);
+    // console.log(ary2);
+    
+    //  扩展插件使用，exrend里面写一个对象，对象的属性就是添加的方法名，值就是函数
+   /*
+
+    //    去掉左边空格 trimLeft
+    $.extend({
+        trimLeft:function(str){
+            return str.replace(/^\s+/,'')
+        }   
+     
+    })
+    console.log($.trimLeft('   123'))
+    
+    */
+
+    // 功能方法（$()的方法）
+    /* 
+        scrollHeight 被内容撑开的高度
+    */
+    $.fn.extend({
+        scrollH:function(){
+            return this[0].scrollHeight;
+        }
+    })
+    
+    $(document).click(function(){
+        console.log($('#txt').scrollH())
+    })
+   
+
+    </script>
+</body>
+    
+</html>
