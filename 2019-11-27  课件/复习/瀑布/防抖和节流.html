@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+<script>
+    /* 
+      防抖：（停下来才触发）
+      当频率很高的时候触发事件都不执行事件函数中的代码
+      只有停下来的时候在执行
+
+      debounce（回调函数,延迟多少时间）
+
+      节流：（降频率）
+           每隔固定的时间执行一次事件函数中的代码（0-100）
+
+     // 防抖（debounce）和 节流（throtting）
+
+    */
+     function throtting(cb,time){
+        let prevtime = 0;
+        return function(...arg){
+            let nowTime = +new date; // 现在的时间转换的是时间戳
+            if(nowTime - prevtime > time){
+                cb.call(this,...arg)
+            }
+            prevtime = nowTime;
+        }
+     }
+     document.onclick = throtting(fn,200)
+     //事件函数的第一个参数为事件对象
+     function fn(ev){
+         console.log('触发了',ev,this)
+     }
+
+     function debounce(cb,time){
+         let timer;
+         return function(...arg){
+             //当事件触发的时候就先关闭上池的timer
+            if(timer){
+                clertTimeout(timer);
+            }
+            timer = serTimeout(()=>{
+                cb.call(this,...ary)
+            },time)
+         }
+     }
+
+</script>
+</body>
+</html>
