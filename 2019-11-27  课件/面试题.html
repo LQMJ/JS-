@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+          then里面才是微任务
+      */
+    
+   
+    const promise = new Promise((resolve,reject)=>{
+        console.log(1); //主线程
+        resolve();  // then里面的微任务
+        console.log(2);  // 主线程
+    })
+    promise.then(()=>{
+        console.log(3);   // 微任务
+    })
+    console.log(4)  // 主线程 
+    
+   
+///////////////////////////////////////////////////////////////////////////////////////////////
+   
+     const promise =  new Promise((resolve,reject) =>{
+        resolve('success1'); // 直接走的正确的微任务
+        reject('error');
+        resolve('success2');
+    });
+    promise.then((res)=>{
+        console.log('then:',res)// 'then:','success1'
+    }).catch((err)=>{
+        console.log('catch',err);
+    }) 
+    
+    
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+     console.log(Promise.resolve(3)) //[[PromiseStatus]]: "resolved"  [[PromiseValue]]: 3
+
+     Promise.resolve(1) // then不是函数就穿透，直到then是函数为止
+     .then(2)
+     .then(_=>6)
+     .then(console.log) // 6 
+///////////////////////////////////////////////////////////////////////////////////////////
+
+    /* 
+       需求：红灯3秒亮一次，绿灯1秒亮一次，黄灯2秒亮一次；
+       让三个灯不断交替重复亮灯（用promise实现）
+
+     */
+     function red(){
+         console.log('red');
+     }
+     function green(){
+         console.log('green')
+     }
+     function yellow(){
+         console.log('yellow')
+     }
+
+     function fn(){
+         let p = new Promise((resolve,reject)=>{
+             setTimeout(()=>{
+                 resolve();
+             },3000)
+         })
+         p.then(()=>{
+             red();
+             return new Promise(function(resolve){
+                 setTimeout(()=>{
+                     resolve();
+                 },1000)
+             })
+         }).then(()=>{
+             green();
+             return new Promise(function(resolve){
+                 setTimeout(()=>{
+                     resolve();
+                 },2000)
+             })
+         }).then(()=>{
+             yellow()
+         })
+     }
+     setInterval(fn,6000)
+///////////////////////////////////////////////////////////////////////////////////////////
+
+   const first = () =>(new Promise((resolve,reject)=>{
+       console.log(3) //1  主线程
+       let p = new Promise((resolve,reject)=>{
+           console.log(7); //2   // 主线程
+           setTimeout(()=>{
+               console.log(5); //6  宏任务
+               resolve(6)
+           },0)
+           resolve(1)
+       })
+       resolve(2)
+       p.then((arg)=>{
+           console.log(arg)  //4  1  微任务
+       })
+   }));
+   first().then((arg)=>{
+       console.log(arg)  //5  2 微任务
+   })
+   console.log(3) //3  主线程
+
+   //  3  7  3  1  2  5  
+
+ 
+//////////////////////////////////////////////////////////////////////////////////////////
+
+  let  p = new Promise((resolve)=>{
+      setTimeout(()=>{
+          resolve();
+      },0)
+  })
+  console.log(p) // p是Promise的实例
+  // [[PromiseStatus]]: "resolved"  成功态
+  // [[PromiseValue]]: undefined   没传参所以是undefined
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// throw 抛出异常，说明代码错误   显示失败态
+  const  promise1  = new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+          resolve('success')
+      },1000)
+  })
+  const promise2  = promise1.then(()=>{
+      throw new Error('error!!!')
+  })
+  console.log('promise1',promise1);//pending 无状态
+  console.log('promise2',promise2);//pending 无状态
+  setTimeout(()=>{
+      console.log('promise1',promise1)// resolve  成功态
+      console.log('promise2',promise2)// reject  失败态
+  },2000)
+  
+  
+////////////////////////////////////////////////////////////////////////////////////////
+  
+  Promise.resolve(1) // 成功态
+  .then((res)=>{
+      console.log(res);//1
+      return 2
+  })
+  .catch((err)=>{
+      return 3
+  })
+  .then((res)=>{ // 第一个.then的返回值是下一个.then的参数
+      console.log(res); //2
+  })
+  .then((res)=>{  // 如果上一个.then没有return，那么下一个.then的参数就是undefined
+      console.log(res); // undefined
+  }) 
+  
+  
+////////////////////////////////////////////////////////////////////////////////////////
+
+   const promise = new Promise((resolve,reject)=>{
+       setTimeout(()=>{
+           console.log('once') 
+           resolve('success')
+       },1000)
+   })
+   const start = Date.now();// 现在的时间戳
+   promise.then((res)=>{ // success1 和 success2 的值会一样
+       console.log(res+'1',Date.now() - start)
+   })
+   promise.then((res)=>{ // 会出现success2比success1略大一点的情况
+       console.log(res+'2',Date.now()- start)
+   }) 
+   
+  
+/////////////////////////////////////////////////////////////////////////////////////////
+ 
+//throw 抛出异常，说明代码错误，会进catch，如果是return new Error('error!!!')不会进catch
+   Promise.resolve()
+   .then(()=>{
+        // throw new Error('error!!!')
+       return new Error('error!!!')
+   })
+   .then((res)=>{
+       console.log('then:',res) //'then':'Error:error!!!'
+   })
+   .catch((err)=>{
+       console.log('then:',err)
+   })
+   .then((res)=>{
+       console.log(res);// undefined 181行代码没有返回值，所以res是undefined
+   })
+   
+    
+//////////////////////////////////////////////////////////////////////////////////////
+
+    // .then或.catch 返回的值不能是promise本身，否者会造成死循环
+   
+    const promise = Promise.resolve()
+    .then(()=>{
+        return promise;
+    })
+    promise.catch(console.error) // 报错
+
+//////////////////////////////////////////////////////////////////////////////////////   
+
+    Promise.resolve(1)
+    .then(2) //then不是函数就穿透，直到then是函数为止
+    .then(Promise.resolve(3))
+    .then(console.log)//1 
+    
+/////////////////////////////////////////////////////////////////////////////////////////
+
+Promise.resolve()
+.then(function success (res){
+    throw new Error('error') // 抛出错误走catch
+},function faill(e){
+    console.error('fail1: ',e)
+})
+.catch(function fail2(e){
+    console.error('fail2: ',e) // 报错
+})
+    </script>
+</body>
+</html>

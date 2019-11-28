@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script>
+    /* 
+        promise.race  在数组中只要有一个异步成功就返回这次的成功的结果;
+
+        promise.all   在数组中的异步操作都要成功才返回成功结果
+
+        then的第二个参数为是失败函数，也可以不用，直接在then函数之后.catch()
+        就可以了
+    
+     */
+     function myFetch(url){
+         return new Promise(function(resolve,reject){
+             $.ajax({
+                 url,
+                 success:function(data){
+                     resolve(data)
+                 },
+                 error:reject
+             })
+         })
+     }
+     let p = Promise.race([myFetch('./1.json'),myFetch('./2.json')])
+     p.then((d)=>{
+         console.log(d)
+     }).catch((error)=>{
+         console.log(error)
+     })
+    
+    
+    </script>
+</body>
+</html>

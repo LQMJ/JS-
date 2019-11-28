@@ -1,35 +1,33 @@
 class Tools{
     getMinIndex(obj){
-        if(!Array.isArray(obj)){
-            obj = [...obj].map((item)=>{
-               return item.scrollHeight;
-            })
-        }
-        let min = Math.min(...obj);
-        let index = obj.findIndex(item=>item===min);
+        var obj1 = [...obj].map((item)=>{
+            return item.scrollHeight;
+         })
+        let min = Math.min(...obj1);
+        let index = obj1.findIndex(item=>item===min);
         return{
             min,index
         }
     }
-    throttling(cb,time){
-        let prevtime = 0;
-        return function(...arg){
-            let nowTime  = +new Date;
-            if(nowTime - prevtime > time){
-                cb.call(this,...arg);
-            }
-            prevtime = nowTime;
-        }
-    }
+    // throttling(cb,time){ // 节流
+    //     let prevtime = 0; 
+    //     return function(...arg){
+    //         let nowTime  = +new Date; // 事件戳
+    //         if(nowTime - prevtime > time){
+    //             cb.call(this,...arg);
+    //         }
+    //         prevtime = nowTime;
+    //     }
+    // }
     debounce(cb,time){
         let timer;
-        return function(...arg){
+        return function(){
           //当事件触发的时候就先关闭上次的timer
           if(timer){
               clearTimeout(timer)
           }
           timer = setTimeout(() => {
-              cb,call(this,...arg)
+              cb.call(this)
           }, time);
         }
     }
@@ -39,14 +37,17 @@ class Waterfall extends Tools{
     constructor(name){
         super();
         this.box = document.querySelector(name);
-        console.log(this.box)
         this.list = this.box.children;//li
-        this.wh = window,innerHeight;//可视区的高度
+        console.log(this.list) // 类数组
+        this.wh = window.innerHeight;//可视区的高度
         this.bodyT = this.box.offsetTop;//ul的定位距离
         this.loading = document.getElementById('loading');
         this.onoff = true;
+        this.render();
+        this.scroll();
     }
     api(url,cb){
+        // console.log(this)
         let that = this;
         fetch(url)
         .then(d=>d.json())
@@ -81,7 +82,7 @@ class Waterfall extends Tools{
             })
         },1000);
     }
-    create({pic,desc,acthor,height}){
+    create({pic,desc,author,height}){
         let div = document.createElement('div');
         div.className = 'img_box';
         div.innerHTML = `
@@ -99,12 +100,12 @@ class Waterfall extends Tools{
             }
         }
         window.onscroll = this.debounce(fn,200);
-        window.onresize = ()=>{
-            this.wh = window,innerHeight
-        }
     }
 }
 
 let w = new Waterfall('.body');
-w.render();
-w.scroll();
+
+
+console.log(setTimeout(()=>{
+    console.log(111)
+},1000))
