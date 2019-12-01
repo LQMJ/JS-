@@ -1,0 +1,50 @@
+@p:1px;
+.ma(@a){
+    margin: @a*@p;
+}
+.pd(@a){
+    padding: @a*@p;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+.w(@a){
+    width: @a*@p;
+}
+.h(@a){
+    height: @a*@p;
+}
+.bg(@a){
+   background:@a;
+}
+.dib(){
+    display: inline-block;
+}
+.div{
+    float:left;
+    margin: 10px;
+    padding: 10px;
+    border:1px solid #ccc;
+    .w(100);
+    text-align: center;
+    img{
+        .w(100);
+    }
+    input{
+        .w(80);
+        margin: 0 auto;
+        .dib();
+        text-align: center;
+
+    }
+    p{
+        .w(80);
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+#btn{
+    margin-bottom: 10px;
+}

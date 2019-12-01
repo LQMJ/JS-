@@ -34,6 +34,7 @@
 
             如果代码报错，下面的代码是不会执行的，如果使用try，catch
             那么try中的代码报错会进catch，报错是不会影响后面代码执行的
+
             try{
 
             }catch(e){
@@ -57,7 +58,7 @@
             '{}'JSON.parse  ->  {}对象
 
             对象转JSON ->  JSON.stringify()的副作用是函数和undefined会被过滤掉
-            [] -> '[]'
+             JSON.stringify() ->  [] -> '[]'
         
          */
     /*
@@ -71,6 +72,9 @@
      */
 
      /* 
+        // finally  无论成功态还是失败态都进
+        
+        // .then的第一个函数进的是成功态，第二个是函数进的是失败态
          let p = new Promise((resolve,reject)=>{
              setTimeout(()=>{
                  a= 20;

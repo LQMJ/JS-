@@ -1,18 +1,15 @@
 class Waterfall{
     constructor(){
-        this.ul = document.querySelector('.body')
-        // console.log(this.ul)
-        this.li = this.ul.children;
-        // console.log(this.li)
-        this.wh = window.innerHeight;
-        this.bodyT = this.ul.offsetTop;
+        this.ul = document.querySelector('.body') // 获取ul
+        this.li = this.ul.children; // 获取li
+        this.wh = window.innerHeight; // 窗口的可视高度
+        this.bodyT = this.ul.offsetTop; // ul
         this.render()
-        // this.create()
         this.scroll()
     }
-    getMinIndex(ary){
+    getMinIndex(ary){ // 取最短的li和它的索引
         var ary2 = [...ary].map(item=>{
-            return item.scrollHeight;
+            return item.scrollHeight;    
         })
         let min = Math.min(...ary2);
         let index = ary2.findIndex(item=>item ===min)
@@ -20,8 +17,7 @@ class Waterfall{
             min,index
         }
     }
-    create({pic,desc,author,height}){
-        // console.log(pic,desc,author,height)
+    create({pic,desc,author,height}){  
         let div = document.createElement('div');
         div.className = 'img_box';
         div.innerHTML = `
@@ -31,31 +27,28 @@ class Waterfall{
         `;
         return div;
     }
-    render(){
+    render(){  // 渲染事件
         fetch('./data.json').then(d=>d.json()).then(data=>{
            data.forEach((d,i)=>{
-            //    console.log(d)
                let {index} = this.getMinIndex(this.li);
                let div = this.create(d);
-               console.log(div)
                this.li[index].append(div);
                setTimeout(()=>{
                    div.children[0].style.opacity = 1
                },i*100)
            })
         })
-    }
-    scroll(){
+    } 
+    scroll(){  // 滚轮事件
         let fn = () =>{
             let {index} = this.getMinIndex(this.li);
             if((window.pageYOffset + this.wh)>(this.li[index].scrollHeight+this.bodyT)){
-            
                 this.render();
             }
         }
         window.onscroll = this.fd(fn,200)
     }
-    fd(cb,time){
+    fd(cb,time){ // 防抖
         let timer;
         return function(){
           if(timer){

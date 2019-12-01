@@ -11,18 +11,22 @@
          return new Promise((resolve,reject)=>{
              let img = document.createElement('img');
              img.src = url;
-            console.log(img)
+            // console.log(img)
              img.onload = function(){
+                 console.log(1)
                 resolve(img);
              }
              img.onerror = function(){
+
                  reject(img)
              }
          })
      }
      let p1 = promisePic('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=640975490,1475444257&fm=26&gp=0.jpg');
      let p2 = promisePic('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3945897505,278645492&fm=26&gp=0.jpg')
-     Promise.all([p1,p2]).then(([a,b])=>{
+     console.log(Promise.race([p1,p2]))
+     let p3 = Promise.race([p1,p2]).then(([a,b])=>{
+         console.log(2)
          console.log(a,b)
          box.append(a);
          box.append(b);
