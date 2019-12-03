@@ -1,0 +1,38 @@
+@p:1px;
+@k:pink;
+@y:yellow;
+*{
+    margin: 0;
+    padding:0;
+}
+.ma(@a){
+    margin:@a*@p auto;
+}
+.pd(@a){
+    padding: @a*@p;
+}
+.w(@a){
+    width: @a*@p;
+}
+.h(@a){
+    height: @a*@p;
+}
+.bg(@a){
+    background: @a;
+}
+.fl(@a){
+    float: @a;
+}
+.por(){
+    position:relative;
+}
+.poa(){
+    position:absolute;
+}
+.ta(){
+    text-align:center;
+}
+.fs(@a){
+    font-size:@a*@p;
+}
+

@@ -1,0 +1,312 @@
+@import './index.less';
+
+body {
+    background: rgba(rgb(192, 251, 255), .3);
+}
+
+#page {
+    border: 1px solid black;
+}
+
+#ymtb {
+    .w(1535);
+    .h(100);
+    .bg(skyblue);
+    .pd(10);
+    box-sizing: border-box;
+    display: flex;
+    // text-align: center;
+}
+
+#ymtb #logo {
+    .w(80);
+    .h(80);
+    background: url('../img/筋斗云.png')no-repeat;
+    background-size: 80px 80px;
+}
+
+#ymtb p {
+    height: 100%;
+    font-size: 30px;
+    padding: 20px 0;
+}
+
+#ymtb ul {
+    .poa();
+    left: 1200px;
+    top: 11px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+#ymtb ul li {
+    .fs(18);
+    margin-left: 30px;
+}
+
+#ymtb ul li:nth-child(3) {
+    .w(1);
+    .h(40);
+    .bg(black);
+    border: 1px solid black;
+}
+
+#ymtb ul li:nth-child(1) img {
+    .w(80);
+    .h(80);
+}
+
+#ymtb ul li:nth-child(4) img {
+    .w(30);
+    .h(30);
+}
+
+#ymnr {
+    .w(1520);
+    .h(577);
+    display: inline-flex;
+
+    #menu {
+        .w(300);
+        .h(615);
+        .bg(#ecf1f7);
+        border: 1px solid gray;
+        .por();
+    }
+
+    #menu div {
+        .h(70);
+        .bg(rgb(190, 185, 185));
+        .fs(18);
+        line-height: 70px;
+        .ta();
+
+    }
+
+    #menu div i {
+        margin-left: -30px;
+        margin-right: 30px;
+        .fs(20);
+        color: rgb(255, 166, 0);
+    }
+
+    #menu ul {
+        .w(230);
+        .poa();
+        left: 17px;
+        margin: 35px;
+    }
+
+    #menu ul li {
+        .w(170);
+        .h(40);
+        line-height: 40px;
+        .ta();
+        .fs(18);
+        margin: 10px;
+        cursor: pointer;
+        border: 1px solid rgb(228, 224, 224);
+        border-radius: 4px;
+    }
+
+    #menu ul li:hover {
+        color: #56acdf;
+        .bg(rgb(206, 201, 201));
+        border-color: #56acdf;
+    }
+
+    #menu ul li i {
+        color: rgb(255, 166, 0);
+        margin-right: 20px;
+        .fs(18)
+    }
+
+    #content {
+        .w(1200);
+        .h(577);
+    }
+
+    #function {
+        .w(1200);
+        .h(70);
+        display: flex;
+        .por();
+    }
+
+    #function ul {
+        .h(70);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #function ul li {
+        color: black;
+        .w(100);
+        .h(50);
+        line-height: 50px;
+        border: 1px solid #d1d9db;
+        border-radius: 4px;
+        cursor: pointer;
+        .fs(16);
+        text-indent: 50px;
+        /* 文字缩进 */
+        margin-left: 20px;
+    }
+
+    #function ul li:hover {
+        color: #56acdf;
+        border-color: #56acdf;
+    }
+
+    #function ul li:nth-child(1) {
+        background: url('../img/download.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function ul li:nth-child(2) {
+        background: url('../img/fenxiang.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function ul li:nth-child(3) {
+        background: url('../img/move.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function ul li:nth-child(4) {
+        background: url('../img/ming.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function ul li:nth-child(5) {
+        background: url('../img/delete.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function ul li:nth-child(6) {
+        background: url('../img/create.png')no-repeat center center;
+        background-position: 20px;
+    }
+
+    #function #txt {
+        .w(300);
+        .h(30);
+        margin: 20px;
+    }
+
+    #function div {
+        display: flex;
+        margin-left: 50px;
+    }
+
+    #function div i {
+        .poa();
+        .w(30);
+        .h(30);
+        background: url('../img/放大镜.png');
+        background-size: cover;
+        top: 22px;
+        left: 1140px;
+    }
+
+    #breadcrumb {
+        .w(1235);
+        .h(40);
+        .bg(skyblue);
+        display: flex;
+        position: relative;
+    }
+
+    #breadcrumb li {
+        .w(30);
+        .h(30);
+        margin-top: 7px;
+    }
+
+    #breadcrumb li:nth-child(1) {
+        background: url('../img/zuoyoujiantou.png')no-repeat center center;
+    }
+
+    #breadcrumb li:nth-child(2) {
+        background: url('../img/zuoyoujiantou-copy-copy.png')no-repeat center center;
+    }
+
+    #breadcrumb li:nth-child(3) {
+        background: url('../img/refresh.png')no-repeat center center;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #breadcrumb li:nth-child(4) {
+        .w(1);
+        .h(20);
+        .bg(#000);
+        position: absolute;
+        top: 5px;
+        left: 114px;
+        // margin-left: 5px;
+        // margin-right: 5px;
+    }
+
+    #breadcrumb li:nth-child(5) {
+        .w(70);
+        .fs(16);
+        .ta();
+        .pd(4);
+        margin-left: 32px;
+    }
+
+    #box {
+        .w(1235);
+        .h(505);
+        .bg(#fff);
+    }
+
+    #box .folders {
+        .w(1230);
+        .h(500);
+        .bg(#fff);
+    }
+
+    #box .folders .folder {
+        .w(130);
+        .h(120);
+        .ta();
+        .fs(14);
+        .fl(left);
+        margin: 10px;
+        // padding: 10px;
+    }
+
+    #box .folders .folder img {
+        .w(100);
+        .h(100);
+    }
+
+    #box .folders .folder input {
+        .w(100);
+        .ma(0);
+        .ta();
+        .fs(14);
+        // font-weight:bolder;
+        display:inline-block;
+    }
+    #box .folders .folder .folder p {
+        .w(100);
+        .ma(0);
+        .ta();
+    }
+
+    #box .kuang {
+        display: none;
+        .w(0);
+        .h(0);
+        .poa();
+        top: -10px;
+        left: -10px;
+        .bg(rgb(216, 200, 220));
+        border: 1px dotted slateblue;
+    }
+}
