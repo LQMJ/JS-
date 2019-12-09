@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./css/iconfont.css">
     <link rel="stylesheet" href="./css/1.css">
 </head>
-
 <body>
     <div id="page">
         <!-- 整个页面 -->
@@ -29,14 +28,16 @@
         </div>
         <div id="ymnr">
             <div id="menu"> <!-- 菜单栏 -->
-                <div><i class="iconfont  icon-wenjianjia"></i>全部文件</div>
-                <ul>
+                <div class="qbwj"><i class="iconfont  icon-wenjianjia"></i>全部文件</div>
+                <div class="tree_menu">
+                  <!-- <ul>
                     <li><i class="iconfont icon-wenjianjia"></i>我的文档</li>
                     <li><i class="iconfont icon-tupianwenjianjia"></i>我的图片</li>
                     <li><i class="iconfont icon-shipinwenjianjia"></i>我的视频</li>
                     <li><i class="iconfont icon-iclean_icon_cms_yinlewenjian"></i>我的音乐</li>
                     <li><i class="iconfont  icon-huishouzhan"></i>回收站</li>
-                </ul>
+                </ul> -->
+                </div>
             </div>
             <div id="content">
                 <!-- 内容区 -->
@@ -45,9 +46,9 @@
                     <ul>
                         <li>下载</li>
                         <li>分享</li>
-                        <li>移动</li>
-                        <li style="width: 120px;">重命名</li>
-                        <li>删除</li>
+                        <li class="set">移动</li>
+                        <li style="width: 120px;" class="rename">重命名</li>
+                        <li id="del">删除</li>
                         <li style="width: 150px;" id="xj">新建文件夹</li>
                     </ul>
                     <div>
@@ -56,13 +57,17 @@
                     </div>
 
                 </div>
-                <ul id="breadcrumb">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li>我的网盘</li>
-                </ul>
+                <div id="breadcrumb">
+                    <ul>
+                        <li class="syj"></li>
+                        <li class="xyj"></li>
+                        <li></li>
+                        <li></li>
+                        <li><div class="bread" onselectstart="return false;"></div></li>
+                    </ul>
+                    <div id="qx"><span style="font-size:16px;">全选</span></div>
+                    <div id="qxk"><input type="checkbox" style="width: 19px;height: 19px;"></div>    
+                </div>
                 <div id="box">
                     <div class="folders">
                     <!-- <div class="folder">
@@ -72,15 +77,37 @@
                     </div> -->
                   </div>
                   <div class="kuang"></div>
+                  <div class="folderChild"></div>
                 </div> <!-- 文档区 -->
             </div>
         </div>
     </div>
+    <div id="rename"><p>不好意思，你重名了</p><button id="btn">确定</button></div>
+    <div id="modal-tree">
+        <h2>选择存储位置</h2>
+        <div class="folderName"><i class="iconfont  icon-wenjianjia"></i><p>全部文件</p></div>
+        <div class="content">
+            <!-- <ul>
+               <li><i></i><span>我的云盘</span></li>
+            </ul> -->
+        </div>
+        <div class="footer">
+            <input class="ok" type="button" value="确定" >
+            <input class="off" type="button" value="取消">
+        </div>
+        <i class="icon_close"></i>
+    </div>
+    <div id="xz"><p>请选择移动的文件</p><button id="btn2">确定</button></div>
 <script src="./js/sql/data.js"></script>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/tools.js"></script>
 <script src="./js/folders/folders.js"></script>
-<!-- <script src="./js/xjwj.js"></script> -->
+<script src="./js/breadmenu/breadmenu.js"></script>
+<script src="./js/kuang/kuang.js"></script>
+<script src="./js/qx/qx.js"></script>
+<script src="./js/delete/delete.js"></script>
+<script src="./js/rename/rename.js"></script>
+<script src="./js/tree/tree.js"></script>
+<script src="./js/remove/remove.js"></script>
 </body>
-
 </html>

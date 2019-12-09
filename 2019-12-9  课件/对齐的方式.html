@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 500px;
+        height: 200px;
+        display: flex;
+        border: 2px solid cyan;
+        /* flex-wrap: wrap; 强制换行*/
+        /* align-items: flex-start;  默认左上对齐*/ 
+        /* align-items: flex-end;  底部对齐 */
+        /* align-items: baseline;  文本对齐 */
+        /* align-items: stretch;   拉扯 */
+        /* align-content: flex-start; 默认左上对齐*/
+        /* align-content:flex-end; */
+
+    }
+    #box span{
+        width: 50px;
+        /* height: 50px; */
+        background: yellow; 
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+     <span>1</span>
+     <span>2</span>
+     <span>3</span>
+     <span>4</span>
+     <span>5</span>
+     <span>6</span>
+     <span>7</span>
+    </div>
+    <script>
+         /*
+
+        默认左上对齐
+            align-items:flex-start;
+
+        底部对齐
+            align-items:flex-end
+
+        文本对齐:
+            align-items:baseline
+
+        拉扯:
+             align-items:stretch (没有设置高度的会被拉扯)
+    */
+      /*
+        多行对齐
+
+        默认左上对齐
+            align-content:flex-start
+
+        底部对齐
+            align-content:flex-end
+
+        文本对齐:
+            align-items:baseline
+
+        拉扯:
+             align-items:stretch (没有设置高度的会被拉扯)
+    */
+    
+    </script>
+</body>
+</html>

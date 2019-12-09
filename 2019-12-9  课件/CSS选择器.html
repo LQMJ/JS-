@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 150px !important;
+        height: 100px;
+        background: slateblue;
+    }
+    .box{
+        background: springgreen;
+    }
+    input[type="text"]{
+        background: violet;
+    }
+    #ul li{
+        background: pink;
+    }
+    /* 父级下的第几个元素 */
+    #ul li:nth-child(3){
+        background: yellow;
+    }
+
+    /* 倒数第几个元素 */
+    #ul li:nth-last-child(3){
+        background: green;
+    }
+    #box2 p:nth-of-type(2){
+        color: greenyellow;
+    }
+    div :only-child{
+        background: hotpink;
+    }
+    </style>
+</head>
+<body>
+    <div id="box" class="box" style="width: 100px;"><span>999</span></div>
+    <input type="text">
+    <input type="button">
+    <ul id="ul">
+        <li></li>
+        <li></li>
+        <li>123</li>
+        <li></li>
+        <li>777</li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="box2">
+        <p>13214</p>
+        <p>35221</p>
+    </div>
+    <script>
+     /* 
+       选择器比重
+
+       ！important  10000
+
+       style      1000
+
+       #(id选择器)       100
+
+       .(类选择器) || ：(伪类选择器)      10
+
+       targName(标签选择器) ||  ：伪元素   1
+       
+       通用选择器（*）、子选择器（>）、相邻选择器（+）、同胞选择器（~） 权重值为0
+     
+
+       ！important(10000) > style(1000) > #(100) > 类，伪类（10） > targName、伪元素（before，after）1  >  *+~ (0)    
+       
+       div[class |= "a"]  class名是a或者是以a开头的都可以选到
+
+       nth-child(n)选择父元素的第n个元素，n是整数（1,2,3）、关键字（even、odd）、公式（2n+1），n的初始值为1;
+
+       nth-last-child(n)选择父元素的倒数第n各元素（所有子元素中查找）
+
+       nth-of-type(n) 只在同一种类型的原型上查找，第n个元素
+       
+       :only-child选择父元素只包含一个子元素
+
+       :only-of-type选择父元素只包含一个同类型的子元素
+
+       empty  选择没有子元素的元素，并且该元素没有任何文本节点
+       
+       */
+    
+    </script>
+</body>
+</html>

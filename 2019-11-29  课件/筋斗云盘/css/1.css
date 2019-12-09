@@ -218,6 +218,10 @@ body {
   padding: 4px;
   margin-left: 32px;
 }
+#ymnr #breadcrumb li:nth-child(6) {
+  width: 70px;
+  font-size: 20px;
+}
 #ymnr #box {
   width: 1235px;
   height: 505px;
@@ -230,11 +234,12 @@ body {
   box-sizing: border-box;
   background: #fff;
 }
-#ymnr #box .folder {
+#ymnr #box .folders .folder {
   float: left;
-  margin: 10px;
+  margin: 20px;
   padding: 10px;
   width: 130px;
+  height: 130px;
   text-align: center;
 }
 #ymnr #box .folder img {

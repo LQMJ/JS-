@@ -2,7 +2,7 @@ var data = {
     "0": {
         "id": 0,
         "pid": -1,
-        "title": "我的网盘",
+        "title": "我的云盘",
         "type": "file",
         "checked":false
     },
@@ -10,6 +10,20 @@ var data = {
         "id": 1,
         "pid": 0,
         "title": "我的文档",
+        "type": "file",
+        "checked":false
+    },
+    "11": {
+        "id": 11,
+        "pid": 1,
+        "title": "js权威指南",
+        "type": "file",
+        "checked":false
+    },
+    "12": {
+        "id": 12,
+        "pid": 1,
+        "title": "js程序设计",
         "type": "file",
         "checked":false
     },
@@ -75,7 +89,7 @@ var data = {
     },
     "423": {
         "id": 423,
-        "pid": 43,
+        "pid": 42,
         "title": "告白气球",
         "checked":false
     },
@@ -102,9 +116,5 @@ var data = {
         "pid": 43,
         "title": "明天过后",
         "checked":false
-    },
-    "5":{
-        "id":5,
-        "title":"新建文件夹",   
     }
 }

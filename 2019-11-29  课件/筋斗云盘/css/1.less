@@ -219,7 +219,10 @@ body{
             .pd(4);
             margin-left: 32px;    
         }
-
+       #breadcrumb li:nth-child(6){
+           .w(70);
+           .fs(20)
+       }
         #box{
             .w(1235);
             .h(505);
@@ -232,14 +235,20 @@ body{
             box-sizing: border-box;
             .bg(#fff)
        }
-       #box .folder{
+       #box  .folders .folder{
            .fl(left);
-           margin:10px;
+           margin:20px;
            .pd(10);
         //    border: 1px solid #ccc;
            .w(130);
+           .h(130);
            .ta();
+        //    cursor: pointer;
        }
+    //    #box  .folders .folder:hover{
+    //        color:#56acdf;
+    //        border-color: #56acdf;
+    //    }
        #box .folder img{
            .w(100);
            .h(100)

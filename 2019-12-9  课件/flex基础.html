@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            display: flex;
+            border: 2px solid skyblue;
+            height: 50px;
+            background: hotpink;
+            /* justify-content: center;  整体居中*/
+            /* justify-content: flex-end; 整体右对齐 */
+            /* justify-content: flex-start;整体左对齐 */
+            /* justify-content:space-between; 第一个和最后一个顶着父级的边，其他平均分配*/
+            /* justify-content:space-around; 有几个元素就分元素2倍的空 左右占一份 元素之间占两份 */
+
+            /* justify-content: space-evenly ; 左右间距平均分配 */
+
+        }
+        #box div{
+            width: 100px;
+            height: 40px;
+            background: greenyellow;
+        }
+        #box2{
+            display: flex;
+            width: 200px;
+            height: 50px;
+            background: cyan;
+            /* flex-wrap: wrap; */
+            /* flex-wrap:wrap-reverse;  两行颠倒 */
+        }
+        #box2 span{
+            width: 100px;
+            height: 30px;
+            background: rgb(115, 255, 0);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+       <div>1</div>
+       <div>2</div>
+       <div>3</div>
+       <div>4</div>
+       <div>5</div>
+       <div>6</div>
+       <div>7</div>
+    </div>
+    <div id="box2">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+</html>
