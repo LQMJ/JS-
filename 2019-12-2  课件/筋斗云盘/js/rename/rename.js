@@ -37,11 +37,11 @@ $rename.click(function(){
                      $siblings.each((i,ele)=>{
                          arc[i] = ele.getAttribute('did');
                      })
-                    console.log(arc)
+                    // console.log(arc)
                     let did =  arc.map(item=>{
                         return data[item].title
                     })
-                    console.log(did)
+                    // console.log(did)
                     if(did.every(item => item != val)){
                         $p.text(val).show();
                         $txt.hide();

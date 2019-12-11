@@ -31,9 +31,9 @@ function render(num=0){
         let $img = $folder.find('img');
         $img.dblclick(function(){
             $input[0].checked = false;
-            window.id1 = $(this).parent().attr('did')*1;
+            window.id1 = $(this).parent().attr('did')*1; // 获取到点的文件的父级的id
              //只要双击进文件夹
-             render(id1);
+             render(id1);  // 渲染页面
              createMenu(id1); //为了联动面包屑
         })
         $folder.mousedown(function(){return false;})
@@ -43,10 +43,8 @@ function render(num=0){
 }
 render(0)
 // console.log($('.folders'))
-// $qx.off().click(function(){
-
-// })
-$('#xj').click(function () {
+// $qx.off().click(function(){})
+$('#xj').click(function () { //新建文件夹
     let $folder = $(`
     <div class="folder">
     <img src="./img/folder.png" alt="">
@@ -65,18 +63,18 @@ $('#xj').click(function () {
         // console.log(list)
         let bool = list.map(item=>item.title).includes(val);
         while (bool){
-            let s = val.replace(/\(\d+\)$/, '') + '(' + num++ + ')';
+            let s = val.replace(/\(\d+\)$/, '') + '(' + num++ + ')';  
             bool = list.map(item => item.title).includes(s);
             nval = s;
         }
         // console.log(data)
         let item = +new Date;
-        data[item]={
+        data[item]={   // 添加新数据
             "id":item,
-            "pid":list[0].pid,
+            "pid":window.id1 || 0,
             "title": nval,
             "checked":false
         }
-        render(list[0].pid)
+        render(window.id1 || 0)  // 文件里面和当前页面都可以创建文件夹
     })
 })

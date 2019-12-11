@@ -5,7 +5,7 @@ const {left:box_l,top:box_t} = $box.offset();
 let arr = [];
 
 $(document).on('mousedown',function(ev){
-     
+
     if(ev.target === document.querySelector('.folders')){
     let disX = ev.pageX,disY = ev.pageY;
     // console.log(disY,disX)
@@ -49,8 +49,8 @@ $(document).on('mousedown',function(ev){
        }
     })  
     
-    $(document).on('mouseup',function(ev){
-        $(document).off('mouseup')
+    $(document).on('mouseup',function(ev){ // 鼠标抬起
+        $(document).off('mouseup')  
         $(document).off('mousemove');
         $kuang.css({
             width:0,
@@ -58,7 +58,7 @@ $(document).on('mousedown',function(ev){
             display:'none'
         })
 
-        if(ev.pageX === disX && ev.pageY === disY){
+        if(ev.pageX === disX && ev.pageY === disY){  // 当鼠标按下和抬起的时候是同一个坐标就清除选中，
             $folder.each((i,ele)=>{
                 ele.style.background = '#fff';
                 $input[0].checked = false;

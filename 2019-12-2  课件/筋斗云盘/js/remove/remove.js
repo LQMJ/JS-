@@ -10,15 +10,18 @@ const $off = $('.off'); // 取消
 const $content = $('.content'); 
 // console.log($content)
 
-const xz = document.querySelector('#xz')
+const xz = document.querySelector('#xz')  // 选择
 
 const btn2 = document.querySelector('#btn2')
 
 const modal = document.querySelector('#modal-tree');
 
+const facz = document.querySelector('#facz') // 非法操作
+
+const btn3 = document.querySelector('#btn3')
 let okcode = -1;
 function createModeTree(num){
-    
+  
     // 通过num找到对应的子级
     let ayy = getChild(data,num);
     console.log(ayy)
@@ -39,7 +42,8 @@ function createModeTree(num){
                 return item.getAttribute('did');
             })
             // console.log(m)
-            if(m.some(d=>d===item.pid)){
+            // console.log(item.id)
+            if(m.some(d=>d*1===item.id)){
                 okcode = 'error';
                 return;
             }else{
@@ -55,7 +59,7 @@ function createModeTree(num){
             }else{
                 $(this).find('ul').remove();
             } 
-            
+          
         })
         $ul.append($li);
     })
@@ -85,21 +89,29 @@ $set.off().click(function(){
     let F = R.map(item=>item.getAttribute('did')) // 存一下改之前的pid，为了一会儿刷新页面
     // console.log(F)
     $ok.off().click(function(){
+        // console.log(okcode)
         if(okcode === 'error'){
-            console.log('非法操作')
-            return
+            modal.style.display = 'none';
+            facz.style.display = 'block';
+            $content.html('');
+            return;
         }
         F.forEach(item=>{
            data[item].pid = npid;
         })
         render(data[F[0]].pid);
         modal.style.display = 'none';
+        $content.html('');
     })
     $off.off().click(function(){
         modal.style.display = 'none';
+        $content.html('');
     })
     btn2.onclick = function(){
         xz.style.display = 'none';
+    }
+    btn3.onclick = function(){
+        facz.style.display = 'none';
     }
 })
 

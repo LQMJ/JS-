@@ -23,7 +23,7 @@ function createMenu(id){
             createMenu(item.id)
             createTree(item.id)
         });
-        console.log(list)
+        // console.log(list)
         // $syj.click(function(){
              
             // render(item.id)

@@ -15,10 +15,8 @@ function createTree(num){
         <li>
         <i  class="iconfont icon-wenjianjia"></i>
         ${item.title}</li>`);
-        if(!getChild(data,item.id).length){
-            $li.find('i').css('background','none')
-        }
-        $li.off().dblclick(function(){
+        
+        $li.off().click(function(){
             if(this.children[0].classList.toggle('open')){
                 $(this).append(createTree(item.id));
                 render(item.id);

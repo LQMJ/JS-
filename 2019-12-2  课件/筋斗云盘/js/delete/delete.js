@@ -10,6 +10,7 @@ $del.click(function(){ // 删除
     // console.log(arr)
    
     if(arr.some(item=>item===true) || mj.some(item=>item===true)){
+        arr = arr.filter(item=>item===false);
         let atr = [];
         a.forEach(item=>{
            atr.push(item.getAttribute('did'))

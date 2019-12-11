@@ -103,6 +103,7 @@ body {
         .w(230);
         .bg(#ecf1f7);
         margin: 15px;
+        // overflow: auto;
     }
 
     #menu .tree_menu ul li {
@@ -124,7 +125,10 @@ body {
         margin-right: 20px;
         .fs(18)
     }
+    
+    // #menu ul li:nth-child(1) i{
 
+    // }
     #content {
         .w(1200);
         .h(617);
@@ -196,7 +200,10 @@ body {
     #function #txt {
         .w(300);
         .h(30);
+        .fs(15);
+        padding-left:15px;
         margin: 20px;
+        border-radius: 25px;
     }
 
     #function div {
@@ -211,7 +218,7 @@ body {
         background: url('../img/放大镜.png');
         background-size: cover;
         top: 22px;
-        left: 1140px;
+        left: 1149px;
     }
 
     #breadcrumb {
@@ -295,6 +302,7 @@ body {
         .w(1230);
         .h(500);
         .bg(#fff);
+        overflow: auto;
     }
 
     #box .folders .folder {
@@ -345,7 +353,6 @@ body {
         left: -10px;
         .bg(rgba(238, 87, 180, 0.274));
         border: 1px dotted rgb(49, 18, 46);
-
     }
 }
 #rename {
@@ -467,5 +474,24 @@ body {
         right: 10px;
         bottom: 5px;
     }
-
+}
+#facz {
+    .w(300);
+    .h(100);
+    .bg(rgba(240, 245, 247, 0.479));
+    .ta();
+    .fs(18);
+    border: 1px solid black;
+    border-radius: 5px;
+    position: fixed;
+    top: 0;
+    left: 45%;
+    line-height: 100px;
+    display: none;
+    button{
+       .fs(14);
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+    }
 }
