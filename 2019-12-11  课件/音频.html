@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+#bar{
+    width:10px;
+    height:80px;
+    border-radius: 25px 25px;
+    position: relative;
+    background:rgba(57, 207, 7, 0.411);
+    margin-top:10px;
+}
+#bar2{
+    width:12px;
+    height:12px;
+    border-radius: 50% 50% ;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(12, 145, 223, 0.384);
+}
+#au{
+    display: none;
+}
+</style>
+</head>
+<body>
+   
+    <button id="btn1">开始</button>
+    <button id="btn3">音量</button>
+    <button id="btn4">进度＋</button>
+    <button id="btn5">进度－</button>
+   
+    <div id="bar">  <!-- 音量条 -->
+            <div id="bar2"></div>
+    </div>
+    <audio id="au" src="./MP3/闫嘉辉&夕柠 - 再次见到你 [mqms2](1).mp3" controls>
+    <script>
+     let num = 0;
+     let onoff = false;
+     btn1.onclick = function(){
+         if(onoff){
+           btn1.innerText = '开始'
+           au.pause(); // 停止
+         }else{
+            btn1.innerText = '暂停'
+           au.play(); // 开始
+         }  
+         onoff = !onoff;
+     }
+     
+     //播放时间变化的时候触发
+    // au.ontimeupdate = function(){
+    //     console.log(au.currentTime); //当前播放的时间
+    // }
+     
+    setTimeout(()=>{
+        // console.log(au.duration);//以秒为单位(音视频的总时长)
+    },100)
+    // console.log(au.duration);//以秒为单位
+    
+     btn3.onclick = function(){
+         au.volume = .2;
+        //  console.log(au.volume)
+     }
+
+     btn4.onclick = function(){
+         au.currentTime = num += 10;
+     }
+     btn5.onclick  =function(){
+         if(num >= 10){
+            au.currentTime = num -= 10;
+         }else{
+             au.currentTime = 0;
+         }
+     }
+    // 控制音量的
+    bar2.onmousedown = function(ev){
+        let disY = ev.pageY - bar2.offsetTop;
+        document.onmousemove = function(ev){
+           let t = ev.pageY - disY;
+           if(t<0){
+               t = 0;
+           }else if(t>bar.offsetHeight - bar2.offsetHeight){
+               t = bar.offsetHeight - bar2.offsetHeight;
+           }
+           let scale = 1-t/(bar.offsetHeight - bar2.offsetHeight);
+           au.volume = scale;
+           bar2.style.top = t + 'px';
+
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null;
+        }
+        }
+    }
+    </script>
+</body>
+</html>

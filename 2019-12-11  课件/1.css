@@ -1,0 +1,7 @@
+body{
+    background: yellow;
+}
+
+#box,#box2{
+    float: initial;
+}
