@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    注册的用户名：<input id="user"/> </br>
+
+    注册的密码：<input type="password" id="pw">
+
+    <button id="btn">提交</button>
+    <script>
+        /* 
+            URL + 参数
+
+            code:1 -> 没有可以注册
+            code:0 ->  用户名被占用 
+        */
+    fetch('/get?user='+user.value+'&pw='+pw.value).then(d=>d.json().then(d=>{
+        console.log(d)
+    }))
+    </script>
+</body>
+</html>
