@@ -51,7 +51,7 @@
 - 运行服务器
   + 输入npm run start  或者输入 node app (按tab键自动补齐)
 
-- ***浏览器要输入localhost/xx.html (打开方式)*** ，千万不要双击直接运行文件（不要在本地打开，要是用localhost）
+- ***浏览器要输入localhost/xx.html (打开方式)*** ，千万不要双击直接运行文件（不要在本地打开，要是用localhost）2
 
 - 代码放到public文件夹下
 
