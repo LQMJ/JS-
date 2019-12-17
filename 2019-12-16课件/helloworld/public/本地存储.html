@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1"></h1>
+    <div id="box">
+         用户名:<input type="text" id="user"/>
+         密码: <input type="password" id="pw">
+         <button id="btn">登录</button>
+    </div>
+<script>
+    /* 
+        刷新之后还有数据（数据是不变的）
+        
+        1.刷新之后请求一次数据
+
+        2.把数据储存在浏览器中
+        
+        cookie
+            - 后端技术，基于浏览器实现的（一般都是后端来设置的，也可以前端来种）
+            - 用来存储用户的操作信息
+            - 一次http请求（填写用户名密码），后端只知道这次请求某人是否合法，http是无状态的，不能记录某人登录过账户
+            所以说使用cookie去存储某个人操作，下次请求的时候，把上一次的操作发给后端，就知道某人是否登陆过账户
+        
+        localStorage
+        sessionStorage
+
+     */
+
+     ajsx('data.xml',{
+        dataType:'xml'
+    }).then(d=>{
+        const person = d.getElementsByTagName('person');
+        let temp = '';
+        for(let i = 0;i<person.length;i++){
+            temp += `<li>我的名字叫:${person[i].children[0].innerHTML},今年${person[i].childern[1].innerHTML}岁,我想说:${person[i].childern[3].innerHTML}</li>`
+        }
+        ul.innerHTML = temp;
+        console.log(person)
+    })
+</script>
+
+</body>
+</html>

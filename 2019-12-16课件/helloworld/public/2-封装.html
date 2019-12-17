@@ -94,8 +94,18 @@
             // 有没有 myopt.body 如果有就url+body，没有就不用加?号了，如果没有body，但是也没?号就添加一个?号
             url = myopt.body?url+'?'+myopt.body:(url.includes('?')?url:url+'?');
             xhr.open('get',url+'&myrandom='+Date.now(),myopt.async);
-            xhr.send()
-        }else if(/^post$/i.test)
+            xhr.send();
+        }else if(/^post$/i.test(myopt.method)){
+                ready();
+                xhr.open('post',url,myopt.async);
+
+                for(var attr in myopt.headers){
+                    if(myopt.headers.hasOwnProperty(attr)){
+                        xhr.setRequestHeader(attr,myopt.headers[attr]);
+                    }
+                }
+                xhr.send(myopt.body);
+            }
 
         }
     }
