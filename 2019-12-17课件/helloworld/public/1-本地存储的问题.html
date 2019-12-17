@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+      function setCookie(key,val,time){
+        // 有没有设置生命周期
+        if(time){ 
+            let o = new Date; // 创建一个时间
+            let t; // data -> Date -> getDate setDate
+            let proop;
+        /* 
+            time.setTime = {
+                data:1,
+                ...
+            }
+            time.setTime.data  1
+            time.setTime['data'] 1
+
+            data[0]  d->D+ate = Date
+
+            data
+        
+         */
+         /* 
+            o.setDate(new Date().getDate()+1) = 明天的时间
+
+            new Date().getDate()+1  比现在多一天
+         
+          */
+         for(let attr in time.setTime){
+             t = attr[0].toUpperCase()+attr.substr(1);
+             prop = attr;
+         }
+         o['set'+t](new Date()['get'+t]()+time.setTime[prop]);
+         console.log(o)
+         document.cookie = key + '=' + val + 'expires='+o;
+        }else{
+            document.cookie = key + '=' + val;
+        }
+      }
+
+</script> 
+</body>
+</html>
