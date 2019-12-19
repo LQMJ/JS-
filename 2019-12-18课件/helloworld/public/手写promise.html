@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function MyPromise(executor){
+            let that = this;
+            that.value = undefined;//成功的值
+            that.reason = undefined;//失败的值
+            that.status = 'pending';//默认是个等待的状态
+            /* 
+                成功和失败的事件池，存储绑定的函数（订阅）
+            
+            */
+           that.fulfilledCallback = [];
+           that.rejectedCallback = [];
+
+        // 成功的函数
+        function fulfilled(value){
+            //在调用成功函数的时候只允许从pending到成功状态
+            if(that.status === 'pending'){
+                // console.log(1)
+                that.status = 'fulfilled';
+                that.value = value; //当调用成功函数的时候，把外界传入得参数赋值给this.value
+                // console.log(that.fulfilledCallback)
+                that.fulfilledCallback.forEach(fn=>{
+                    fn();
+                });
+            }
+        }
+        // 失败的函数
+        function rejected(reason){
+            //发布失败池
+            //在调用成功函数的时候只允许从pending到失败态
+            if(that.status === 'pending'){
+                that.status = 'rejected';
+                that.reason = reason;
+                that.rejectedCallback.forEach(fn=>{
+                    fn();
+                });
+            }
+        }
+        try{
+            executor(fulfilled,rejected);
+        }catch (error){
+            rejected(error);
+        }
+        // executor(fulfilled,rejected)
+        //只要调用MyPromise，就执行executor，所以在executor中有同步和异步的代码
+        }
+        MyPromise.prototype.then = function(res,rej){
+            //    console.log(res)
+            //    console.log(rej)
+               let that = this;
+            //    console.log(that.status)
+               //为了保证then一直then，then必须返回一个promise对象
+               let promise2 = new MyPromise(function(resolve2,reject2){
+                    //成功的情况下调用res
+               if(that.status === 'fulfilled'){
+                   try{
+                       let x = res(that.value);
+                       resolve2(x)
+                   }catch(error){
+                       resolve2(that,value);
+                   }
+                //    res(that.value);
+               }
+               //失败的情况下调用rej
+               if(that.status === 'rejected'){
+                try {
+                    let x = rej(that.reason);
+                    reject2(x);
+                } catch (error) {
+                    rejected2(that.reason);
+                }
+                //    rej(that.reason)
+               }
+
+               //异步的情况，把成功和失败的函数订阅到对应的池子里
+               if(that.status === 'pending'){
+                   that.fulfilledCallback.push(function(){
+                    try {
+                        let x = res(that.value);
+                        resolve2(x);
+                    } catch (error) {
+                        if(typeof res === 'function'){
+                            reject2(that.reason);
+                        }else{
+                            resolve2(that.value);
+                        }
+                    }
+                    //    res(that.value);
+                   });
+                   that.rejectedCallback.push(function(){
+                    try {
+                        let x = res(that.value);
+                        resolve2(x);
+                    } catch (error) {
+                        if(typeof res === 'function'){
+                            reject2(that.reason);
+                        }else{
+                            resolve2(that.value);
+                        }
+                    }
+                    //    rej(that.reason);
+                   })
+               }
+                //  console.log(that.fulfilledCallback)
+            });
+            return promise2;    
+        }
+        new MyPromise(function(resolve,reject){
+            // console.log(1)
+            // setTimeout(()=>{
+            //     resolve(10);
+            // },1000);
+            res(10)
+        })
+        .then((d)=>{
+            throw new Error('就是错了')
+        },(d)=>{
+            console.log(d)
+        })
+        .then(function(d2){
+        console.log(d2)
+        },function(err) {
+        console.log('错误')
+        })
+        .then(function(d){
+            console.log(d)//10 成功
+            return 1;
+        }) .then(function(d2){
+            console.log(d2)
+        })
+       
+
+        // then后面不能加then，因为then没有返回值是undefined
+        // .then(function(){
+        //     console.log(1)
+        // })
+    </script>
+</body>
+</html>
