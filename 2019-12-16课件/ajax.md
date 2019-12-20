@@ -146,7 +146,7 @@ Request Headers （请求头） -> 发给服务器的东西（发给别人的）
 
 Query String Parmeters （请求体）
 
-### xhr有uoload这个属性是一个对象，代表上传时候的事件
+### xhr有upload这个属性是一个对象，代表上传时候的事件
 >xhr.upload.onprogress  上传时候的进度
 
 ``` 

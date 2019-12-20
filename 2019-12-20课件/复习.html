@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /* 
+       ajax  
+
+       fetch() ->Es6新的api,基于promise
+
+       axios  -> 基于promise封装XMLHttpRequest
+
+    get： url的方式请求 （可暴露的）
+
+       接口：localhost/api?user=login
+
+       fetch('/api?wd=山东')
+
+       xhr.open('get','/api?wd=山东');
+
+       $ajax({
+         url:'/api',
+         data:{
+             wd:'山东'
+         }
+       })
+
+    post： 服务端的方式请求  （不可暴露的）
+          
+        接口:localhost/api/post
+
+        send(user=山东&pw=123)
+         
+        script src = 'localhost/s?wd='山东''
+     
+        fetch('/users/',{
+            method:'POST', 请求方式 
+             headers:{   // 请求方式
+                  'content-type':'application'/x-www-from-urlencoded'
+            },
+            body:''+new URLsearchParmas({ // 查询参数
+                username:'lilei',
+                password:'123',
+                mobile:798678,
+                ......
+            })   
+        })
+        send('username=lilei&password=123')
+
+    axios里面有拦截器，方便做一些钩子处理
+
+    XMLHttpRequest 可以监听细节，监听请求过程1-4
+
+    超时处理、abort强制中断，onabort中断监听
+
+    XHR(浏览器自带的api) 和 axios（基于这个XHR来封装的一个js库） 区别
+
+
+    网络的7层协议
+     */    
+        
+        
+    </script>
+</body>
+</html>

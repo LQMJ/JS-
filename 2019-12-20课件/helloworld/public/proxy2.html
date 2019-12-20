@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+           XHR 
+        
+        */
+     let xhr = new XMLHttpRequest;
+     xhr.open('get','/proxy');//请求方式，请求地址
+     xhr.send();//发送请求
+     xhr.onload = function(){
+         document.write(xhr.responseText)//写入文档流
+     }   
+        
+        
+    </script>
+</body>
+</html>

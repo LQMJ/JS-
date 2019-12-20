@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+           async
+           await
+        
+        */
+        document.onclick = async function(){
+            console.log('请求知前')
+            // 注意：await后面必须是个Promise对象
+            let res = await fetch('/sleep?user=123').then(e=>e.text());
+            console.log('拿到数据'+res);
+            console.log('请求之后');
+        }
+    
+    
+    
+    </script>
+</body>
+</html>
