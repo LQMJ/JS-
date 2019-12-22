@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+     用户名: <input type="text" id="us">
+     密码: <input type="password" id="pw">
+     <button id="btn">注册</button>
+
+     <script>
+     us.onblur = async function(){
+         let data = await fetch('/post',{
+             method:'post',
+             body:'user='+this.value,
+             headers:{
+                'content-type':'application/x-www-form-urlencoded'
+             }
+         }).then(e=>e.json());
+
+         console.log(data)
+     }
+     
+     btn.onclick = function(){
+         fetch('/register?user='+us.value+'&password='+pw.value).then(d=>d.json()).then(d=>{
+             if(d.code === 0){
+                 alert('注册失败')
+             }else if(d.code === 1){
+                  alert('注册成功')
+             }else if(d.code === 2){
+                 alert(d.msg);
+             }
+         })
+     }
+     
+     
+     </script>
+</body>
+</html>

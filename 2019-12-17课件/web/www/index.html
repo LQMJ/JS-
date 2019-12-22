@@ -44,7 +44,7 @@
 
     //刷新就请求第一页的数据
     fetch('/api/weibo?act=get&page=1').then(d=>d.json()).then(d=>{
-        // console.log(d);
+        console.log(d);
         // div1.innerHTML = '';
         d.reverse();
         d.forEach(e=>{
@@ -68,7 +68,7 @@
         
         //请求成功之后才能插入页面
         fetch('/api/weibo?act=add&content='+value).then(d=>d.json()).then(d=>{
-            // console.log(d);
+            console.log(d);
             if(d.code === 0){
                 /*
                     如果在使用服务器时间的时候，发现设置的时间为1970，直接*1000,因为服务器时间是以秒来计算的
@@ -79,30 +79,31 @@
                 render(d);
                 text.value = '';
             }
+            let id = d['id'];
+            console.log(id)
             const zan = document.querySelector('.top');
-            console.log(zan.innerText)
-            let t = Number(zan.innerHTML);
+
             zan.onclick = function(){
-                 fetch('/api/weibo?act=like&id='+t).then(d=>d.json()).then(d=>{
+                 fetch('/api/weibo?act=like&id='+id).then(d=>d.json()).then(d=>{
                      console.log(d)
                     //  if(d.code === 0){
-                    //      d.id = t;
-                    //      render(d)
-                    //      zan.innerText = ''
+                    //     render(d)
                     //  }
                  })
             }
             const cai = document.querySelector('.down_icon');
-            let c = Number(cai.innerHTML)
             cai.onclick = function(){
-                fetch('/weibo?act=dislike&id='+c).then(d=>d.json()).then(d=>{
-                    console.log(d)
+                fetch('/weibo?act=dislike&id='+id).then(d=>d.json()).then(d=>{
+                   render(d)
                 })
             }
-            const qx = document.querySelector('.cut');
-
+            const sc = document.querySelector('.cut');
+            sc.onclick = function(){
+                fetch(' /weibo?act=del&id='+id).then(d=>d.json()).then(d=>{
+                    render(d)
+                })
+            }
         })
-
     }
 
 
