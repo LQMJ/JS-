@@ -65,9 +65,9 @@ fetch('/get?page=3')
 
 -fs 文件系统
    - readFile(读的文件地址，回调函数(失败，文件数据)) // 异步用的回调
-   - readFileSyne(读的文件地址) // 同步，如果读取失败会报错，所有使用try包一下
+   - readFileSync(读的文件地址) // 同步，如果读取失败会报错，所有使用try包一下
    
-   - writeFile  添加文件
+   - writeFile  添加文件          
    - writeFileSync
 
    - unlink 删除文件
@@ -77,9 +77,18 @@ fetch('/get?page=3')
 
 
 
-    
+ygbhhjgvgnbvcgbjhyuhinnmfyxdxvbvgvyghcnbuhuycfgbanzhuanbhjfytbvgcfcfqilijggytffcfcdvbbxdxbcfgcttgfcvbcfgxdvbdxd
 
 
 
 
-    
+
+
+
+
+
+
+
+
+
+ygbhhjgvgnbvcgbjhyuhinnmfyxdxvbvgvyghcnbuhuycfgbanzhuanbhjfytbvgcfcfqilijggytffcfcdvbbxdxbcfgcttgfcvbcfgxdvbdxd
