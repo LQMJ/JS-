@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding: 0;
+    }
+    #box{
+        width: 100px;
+        height: 100px;
+        background:red;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="box"
+        @mousedown="down($event)"></div>
+    </div>
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            disX:0,
+            disY:0,
+        },
+        methods:{
+            down(ev){
+                console.log(ev)
+                const {target,target:{offsetLeft,offsetTop},pageX,pageY} = ev;
+                this.disX = pageX - offsetLeft;
+                this.disY = pageY - offsetTop;
+                let that = this;
+                document.onmousemove = function(ev){
+                    console.log(target)
+                   const {pageX,pageY} = ev;
+                   target.style.left = pageX -that.disX + 'px';
+                   target.style.top = pageY - that.disY + 'px';
+                }
+                document.onmouseup = function(){
+                    document.onmouseup = document.onmousemove = null; //解绑事件
+                }
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

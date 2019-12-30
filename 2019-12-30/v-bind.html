@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <button @click="num=0">第一张图片</button>
+        <button @click='num=1'>第二张图片</button>
+        <img v-bind:src="imgs[num]" alt="">
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    /* 
+       如果说属性需要**动态操作**，那么就是使用v-bing:xx   缩写： ：
+       
+       ：style="{属性名：属性值（可以为数据）}"
+       ：style="[{属性名：属性值（可以为数据）}，{属性名2:属性值2（可以为数据）}]"
+       ：class="{类名：布尔值}"
+       v-bing="{data:1}"  没有具体的属性可以使用v-bing = 对象（批量设置属性）
+    
+    */
+    new Vue({
+        el:'.app',
+        data:{
+            num:0,
+            imgs:['./1.jpg','./2.jpg']
+        },
+        size:50,
+    })
+    </script>
+</body>
+</html>

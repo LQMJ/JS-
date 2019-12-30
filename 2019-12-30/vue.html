@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 100px;
+        height: 100px;
+        border: 2px solid slateblue;
+    }
+    .box2{
+        width: 100px;
+        height: 100px;
+        border: 2px solid red;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="app">
+        <button @click="b=!b">{{fn(b)}}</button>
+        <!-- <button @click="click">{{title}}</button> -->
+        <div v-if="b" class="box"></div> 
+        <div class="box2" v-else></div>
+        <!-- <div v-text='str'></div> -->
+        <!-- <div v-html='str'></div> -->
+        <!-- <div v-show="b" class="box"></div> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    let v = new Vue({
+        el:'.app',
+        data:{
+            b:true,
+            fn(b){
+                if(b){
+                    return '点击收起'
+                }else{
+                    return '点击展开'
+                }  
+            },
+            // title:'点击收起',
+            str:'<p>哈哈</p>'
+        },
+        //methods:{专门放函数的（一般是事件函数）}
+        // methods:{
+        //     click(){
+        //         //this是实例
+        //         // console.log(this)
+        //         this.b = !this.b;
+        //         this.title = `${this.b?'点击收起':'点击展开'}`
+        //     }
+        // }
+    });
+    setTimeout(()=>{
+        v.b = false;
+    },3000)
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>

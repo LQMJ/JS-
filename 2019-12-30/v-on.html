@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            background:salmon;
+        }
+        #box2{
+            width:50px;
+            height:50px;
+            background:gold;
+        }
+        
+        </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @change="change(1,$event)">
+     <!-- <input 
+     type="text"
+     v-model="val"/> -->
+     <button @click="add">发送</button>
+     <ul>
+         <li v-for="(val) in ary">{{ val }}</li>
+     </ul>
+
+     <div id="box"
+          @click='click1'>
+         <div id="box2"
+              @click.stop='click2'></div>
+              <!-- .stop 阻止冒泡 -->
+    </div>
+     
+
+    <input type="text" @mousedown.prevent>
+    <!-- .prevent 阻止默认事件 -->
+    <button @click.once="once">点一次就完</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+       new Vue({
+           el:"#app",
+           data:{
+               ary:[1111111],
+               val:''
+           },
+           methods:{
+               add(){
+                   this.ary.push(this.val);
+                   this.val = '';
+               },
+               click1(){
+                   alert(1)
+               },
+               click2(ev){
+                   alert(2)
+                   console.log(ev)  
+                //    ev.cancelBubble = true; //阻止冒泡 
+                //    ev.stopPropagation(); //阻止冒泡 
+               },
+               once(){
+                   alert(7)
+               },
+               change(num,ev){
+                   //change 内容改变失焦触发 
+                    //如果不传参，第一个参数就是事件对象
+                    //*** 如果传了参还想拿到事件对象，需要在模板中的事件函数内传一个$event
+                    console.log(ev.target.value);
+                    // this.val = ev.target.value;
+               }
+           }
+       })
+    
+    
+    
+    </script>
+</body>
+</html>
