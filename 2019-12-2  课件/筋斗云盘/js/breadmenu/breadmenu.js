@@ -1,5 +1,5 @@
 const {getParents,getChild,getParent} = tools;
-const $bread = $('.bread')
+const $bread = $('.bread');
 // console.log($bread)
 const $syj = $('.syj')
 const $xyj = $('.xyj')
