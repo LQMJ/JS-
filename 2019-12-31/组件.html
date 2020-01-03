@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+        <hr>
+        <btn></btn>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    const btn = {
+         template:`<button @click='click'>按钮{{num}}</button>`, // 模板中顶层只能有一个元素
+         data(){
+             return {
+                 num:0
+             }
+         },
+         methods:{
+             click(){
+                 this.num++
+             }
+         }
+     }
+    //  Vue.component('btn',btn)   第一种注册方式
+     new Vue({
+         el:'#app',
+         data:{
+            num:1
+         },
+         components:{  // 第二种注册方式
+             btn
+         }
+     })
+    
+    
+    
+    
+    </script>
+</body>
+</html>

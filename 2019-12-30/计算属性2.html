@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model.lazy="fullName">
+        <!--  修饰符.lazy：取代input监听change事件  -->
+        {{fullName}}
+        <p>{{fname}}</p>
+        <p>{{lname}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+    new Vue({
+        el:"#app",
+        data:{
+            fname:"小明",
+            lname:"小黑"
+        },
+        computed:{
+            //可以为一个对象，里面可以设置get，set
+            fullName:{
+                get(){
+                    return this.fname +" "+this.lname
+                },
+                set(val){
+                    let ary = val.split(' ');
+                    this.fname = ary[0],
+                    this.lname = ary[ary.length-1];
+                }
+            }
+        }
+
+    })      
+    </script>
+</body>
+</html>

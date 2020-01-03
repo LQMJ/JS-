@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <div
+         v-bind="{class:a,id:'box'}"
+         @click="fn(key)"
+         v-for="(val,key) in ary"
+         >7777777</div>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+    /* 
+       v-bind (缩写 :) 动态地绑定一个或多个特性 
+
+       v-on (缩写 @) 绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。
+    
+      v-for 基于源数据多次渲染元素或模板块；
+     */
+    new Vue({
+        el:'#app',
+        data:{
+            a:'active',
+            ary:[1,2,3,4]
+        },
+        methods:{
+            fn(key){
+                console.dir(box)
+            }
+        }
+    })
+    
+    
+    
+    </script>
+</body>
+</html>

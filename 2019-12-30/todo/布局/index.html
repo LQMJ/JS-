@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header">
+                <h1>todos</h1>
+                <input @keyup.13="add" v-model="val" class="new-todo" placeholder="请输入内容">
+            </header>
+            <section class="main">
+                <input class="toggle-all" type="checkbox" @click="qx">
+                <ul class="todo-list">
+                    <li :class="{completed:val.checked}" v-for="(val,key) in setAry">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" v-model="val.checked">
+                            <label>{{val.txt}}</label>
+                            <button class="destroy" @click="rm()"></button>
+                        </div>
+                        <input class="edit" />
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+                <span class="todo-count">
+                    <strong>{{ary.filter(item=>!item.checked).length}}</strong>
+                    <span>条未选中</span>
+                </span>
+                <ul class="filters">
+                    <li>
+                        <a href="#/all" :class="{selected:val2==='全部'}" @click="val2='全部'">全部</a>
+                    </li>
+                    <li>
+                        <a href="#/unchecked" :class="{selected:val2==='未选中'}" @click="val2='未选中'">未选中</a>
+                    </li>
+                    <li>
+                        <a href="#/checked" :class="{selected:val2==='已选中'}" @click="val2='已选中'">已选中</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </section>
+    <script src="../../vue.js"></script>
+    <script>
+        // editing completed
+        // editing ''
+        // ''
+        //completed
+
+        new Vue({
+            el: '.todoapp',
+            data: {
+                val: '',
+                val2: '全部',
+                onoff:true,
+                ary: [
+                    {
+                        id: 0,
+                        txt: '哈哈',
+                        checked: true,
+                        onoff: false
+                    },
+                    {
+                        id: 1,
+                        txt: '呵呵',
+                        checked: false,
+                        onoff: false
+                    }
+                ]
+            },
+            methods: {
+                add() {  // 添加
+                    if (this.val) {
+                        this.ary.unshift({
+                            id: Date.now(),
+                            txt: this.val,
+                            checked: false,
+                            onoff: false
+                        });
+                        this.val = '';
+                    }
+                },
+                rm(key) { 
+                    // 清除数据（删除效果）
+                    // this.ary = this.ary.filter((e, index) => index !== key)
+                        let sy = this.ary.findIndex(item=>item.id)
+                        this.ary.splice(sy,1)
+                },
+                qx() {
+                    if (this.onoff) {
+                        this.ary.forEach((item) => {
+                            if (item.checked === false) {
+                                item.checked = true;
+                            }
+                        })
+                    } else {
+                        this.ary.forEach((item) => {
+                            if (item.checked === true) {
+                                item.checked = false;
+                            }
+                        })
+                    }
+                    this.onoff = !this.onoff
+                }
+            },
+            computed: {
+                setAry() {  // 切换
+                    const { val2, ary } = this;
+                    return ary.filter(item => {
+                        switch (val2) {
+                            case "全部":
+                                return item;
+                            case '未选中':
+                                return !item.checked;
+                            case '已选中':
+                                return item.checked;
+                            default:
+                                return item;
+                        }
+                    })
+                }
+            },
+            watch:{
+                ary:{
+                    handler(val,oldVal){
+                        localStorage.setItem('data',JSON.stringify(val)) // 本地存储
+                    },
+                    //深度监听
+                    deep:true
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

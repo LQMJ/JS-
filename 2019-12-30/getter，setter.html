@@ -13,26 +13,29 @@
     
      */
 
-    //  let obj = {name:'haha'}
+     let obj = {name:'haha'}
     //  obj.age = 2;
-    //  let num = 2;
-    //  Object.defineProperty(obj,'age',{
-    //      value:2,
-    //      writable:true,//属性不可被修改
-    //      enumerable:false,//属性是否可以被枚举
-    //      configurable:false, //是否可以被删除
-    //      get(){
-    //          //当读取这个属性的时候触发
-    //          console.log('读了');
-    //         //  return后的内容就是读操作后的结果（必须写return）
-    //         return num;
-    //      },
-    //     //  set(val){
-    //     //      //当写操作（这个属性）的时候触发（可以没有return的）
-    //     //      console.log("也来了")
-    //     //      num = val;
-    //     //  }
-    //  })
+     let num = 2;
+     Object.defineProperty(obj,'age',{
+        //  value:2,
+        //  writable:true,//属性不可被修改
+         enumerable:false,//属性是否可以被枚举
+         configurable:false, //是否可以被删除
+         get(){
+             //当读取这个属性的时候触发
+             console.log('读了');
+            //  return后的内容就是读操作后的结果（必须写return）
+            return num;
+         },
+         set(val){
+             //当写操作（这个属性）的时候触发（可以没有return的）
+             console.log("也来了")
+             num = val;
+         }
+     })
+     console.log(obj.age)
+     obj.age = 17;
+     console.log(obj.age)
 
     let obj = {}
     // Object.defineProperty(obj,'age',{

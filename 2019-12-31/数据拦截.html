@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+      钩子函数
+
+      回调函数（某个条件成立触发这个函数）
+
+      obj.age = 10
+
+      set(){
+          // 当指定的属性被写操作的时候触发
+      }
+     */
+    
+     let obj = {};
+     let num = 0;
+     Object.defineProperty(obj,'age',{
+         //当读age的时候触发get
+         get(){
+             //console.log('我读了')
+             alert('丫，你居然在偷看我')
+             return num;
+         },
+         //当写操作的时候触发set
+         set(){
+             num = toD(val)
+         }
+     });
+
+     obj.age = 5;
+     console.log(obj.age)
+
+     function toD(n){
+         return n<10?'0'+n:''+n;
+     }
+    </script>
+</body>
+</html>
