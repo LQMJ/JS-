@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-color="'green'">
+            {{val}}
+        </div>
+        <input type="text" v-focus value="111">
+        <hr>
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <div v-size="50">32132321</div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+     /*
+        Vue.directive('my-directive', {
+            bind: function () {},
+            inserted: function () {},
+            update: function () {},
+            componentUpdated: function () {},
+            unbind: function () {}
+        })
+    */
+    // 注册一个全局自定义指令 v-color
+    Vue.directive('color',function(el,val){
+        el.style.color = val.value?val:'red'
+    })
+
+    // 注册一个全局自定义指令 v-focus
+    Vue.directive('focus',{
+        // 当被绑定的元素插入到 DOM 中时
+        inserted(el){
+            el.select();   // 聚焦元素
+        }
+    })
+    
+    new Vue({
+        el:'#app',
+        data:{
+            val:'val是最后一关'
+        },
+        components:{
+            aaa:{
+                template:'#aaa',
+                directives:{ // 注册一个全局自定义指令 v-size
+                    size(el,val){
+                        console.log(val)
+                        el.style.fontSize = val.value?val.value+'px':'12px';
+                    }
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>
