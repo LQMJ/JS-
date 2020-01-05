@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ppa>
+            <div slot="head">我的头有九个</div>
+            <div slot="body">我的身体有万丈</div>
+            <div slot="footer">我有八只脚</div>
+        </ppa>
+   </div>
+   <template id="ppa">
+        <div>
+           <slot name="head">
+               <div class="herd">头部</div>
+           </slot>
+           <slot name="body">
+               <div class="body">身体</div>
+           </slot>
+           <slot name="footer">
+               <div class="footer">脚</div>
+           </slot>
+
+        </div>
+   </template>
+    <script src="./vue.js"></script>
+    <script>
+     /* 
+        具名插槽:
+            在slot标签中设置一个name属性，值为随意
+            在插入替换内容的时候，在替换标签中定义一个slot的属性值和要替换的name对应
+     
+     */
+    
+    const ppa ={
+        template:'#ppa'
+    }
+    
+    new Vue({
+        el:'#app',
+        components:{
+            ppa
+        }
+    })
+    </script>
+</body>
+</html>

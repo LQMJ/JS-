@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ppa :data="ary">
+          <template #cdata="childrenData">
+              <h2>我的名字叫:{{childrenData.nn}}</h2>
+              <p>我的年龄是:{{childrenData.age}}</p>
+              <p>我的编号是:{{childrenData.id}}</p>
+          </template>
+        </ppa>
+    </div>
+    <template id="ppa">
+        <div>
+            <ul>
+                <li  v-for="(val,key) in data">
+                    <slot
+                        name="cdata" 
+                        :nn="val.name" 
+                        :age="val.age"
+                        :id="val.id"
+                    > {{val.name}} </slot
+                    >
+                </li>
+            </ul>
+        </div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+    /* 
+       作用域插槽
+            在子级的slot中
+                  1.定义一个name="唯一标识符"
+                  2.通过v-bind去传入使用的数据
+            
+            在父级template中
+                  1.v-slot：name标识符 = "自定义的名字"
+                    *** v-slot可以缩写为#
+                  2.使用自定义的名字.xx
+            
+            <slot name="cc" :age="index++"></slot>
+    
+    
+    */
+    const ppa = {
+        template:'#ppa',
+        props:['data']
+    }
+
+    new Vue({
+        el:'#app',
+        data:{
+            ary:[
+                {
+                    name:'路飞',
+                    age:18,
+                    id:0
+                },
+                {
+                    name:'索隆',
+                    age:8,
+                    id:1
+                },
+                {
+                    name:'山治',
+                    age:30,
+                    id:2
+                }
+            ]
+        },
+        components:{
+            ppa
+        }
+    })
+    
+    
+    
+    
+    </script>
+</body>
+</html>
