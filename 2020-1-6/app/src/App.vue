@@ -24,7 +24,35 @@
 			或者
 			yarn add vue-router
 
-*/
+	找到main.js
+				1.引包
+					import VueRouter from 'vue-router';
+				2.安装路由功能
+					Vue.use(VueRouter);
+
+				3.实例化VueRouter
+					const router = new VueRouter({
+						routes:[
+							{
+								path:'指定路径',
+								component:指定路径响应的组件
+							}
+						]
+					});
+
+				4.挂路由
+					默认配置是hash路由
+					new Vue({
+						mode:'history',
+						router
+					})
+
+				5(*).设置路由页面渲染的位置
+					<router-view></router-view>
+
+		
+	*/
+
 export default {
 
 }

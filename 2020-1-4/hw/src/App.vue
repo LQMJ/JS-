@@ -7,7 +7,7 @@
                 <input 
                     class="toggle-all" 
                     type="checkbox"
-                    :checked="ary.every(item=>item.checked)"
+                    :checked="ary.length && ary.every(item=>item.checked)"
                     @click="qx"
                 >
                 <ul class="todo-list">
@@ -44,7 +44,7 @@ export default {
         {
           id:0,
           txt:'哈哈',
-          checked:true,
+          checked:false,
           onofff:false
         },
         {

@@ -19,7 +19,7 @@
        },
        methods:{
            enterFn(){
-               this.$emit('cv',this.val)
+               this.$emit('cv',this.val.trim())
                this.val = '';
            }
        }
