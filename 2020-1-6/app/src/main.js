@@ -3,8 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false
-Vue.use(VueRouter)
-console.log(VueRouter)
+Vue.use(VueRouter)         
 
 import Home from './components/home.vue';
 import About from './components/about.vue';
