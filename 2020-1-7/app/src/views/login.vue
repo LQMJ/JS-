@@ -20,8 +20,8 @@ export default {
             const {uname,pass} = this;
             setTimeout(()=>{
                 if(uname === '洛奇' && pass === '123'){
-                //跳转
-                //   this.$router.push('/')
+                // 跳转
+                  this.$router.push('/')
                 // this.$router.push({
                 //     path:'/',
                 //     // ?name=洛奇
@@ -37,7 +37,6 @@ export default {
                 //         name:'洛奇'
                 //     }
                 // })
-                this.$router.go(2)
                 }
             },2000)
         }
